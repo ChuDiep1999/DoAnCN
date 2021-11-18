@@ -1,0 +1,142 @@
+﻿@using DoAnChuyenNganh.Models
+@using CaptchaMvc.HtmlHelpers
+@using CaptchaMvc
+@model ThanhVien
+@{
+    Layout = null;
+}
+
+<!--A Design by W3layouts
+Author: W3layout
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Trang Đăng Ký</title>
+    <!-- metatags-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="wedlock register form a Flat Responsive Widget,Login form widgets, Sign up Web forms , Login signup Responsive web form,Flat Pricing table,Flat Drop downs,Registration Forms,News letter Forms,Elements" />
+    <script type="application/x-javascript">
+         addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+        function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- Meta tag Keywords -->
+    <!-- css -->
+    <link rel="stylesheet" href="~/Content/RegisterLayout/css/style.css" type="text/css" media="all" />
+    <!--// css -->
+    <link href="//fonts.googleapis.com/css?family=Cabin" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Philosopher" rel="stylesheet">
+</head>
+<body>
+    <section class="agile-header">
+        <div class="agile-heading">
+            <h1><span class="image"></span><label>w</label>ed<label>l</label>ock register form</h1>
+        </div>
+        <div class="agile-form">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div >
+                <h4 style="font-weight:bold;color:red;"class="didoi">@ViewBag.ThongBaoDangKy</h4>
+            </div>
+                
+
+                <div class="agile-email">
+                    <p>tên đăng nhập</p>
+                    <p class="text-danger">@ViewBag.error</p>
+                    @Html.ValidationMessageFor(model => model.TenDangNhap, "", new { @class = "text-danger" })
+                    @Html.TextBoxFor(model => model.TenDangNhap)
+
+                </div>
+                <div class="agile-password">
+                    <p>mật khẩu</p>
+                    @Html.ValidationMessageFor(model => model.MatKhau, "", new { @class = "text-danger" })
+                    @Html.PasswordFor(model => model.MatKhau)
+
+                </div>
+                <div class="agile-email">
+                    <p>Nhập lại mật khẩu</p>
+                    @Html.ValidationMessageFor(model => model.NhapLaiMatKhau, "", new { @class = "text-danger" })
+                    @Html.PasswordFor(model => model.NhapLaiMatKhau)
+
+                </div>
+                <div class="agile-email">
+                    <p>họ tên</p>
+                    @Html.ValidationMessageFor(model => model.HoTen, "", new { @class = "text-danger" })
+                    @Html.TextBoxFor(model => model.HoTen)
+
+                </div>
+                <div class="agile-email">
+                    <p>địa chỉ</p>
+                    @Html.TextBoxFor(model => model.DiaChi)
+                </div>
+                <div class="agile-email">
+                    <p>Địa chỉ email</p>
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                    @Html.TextBoxFor(model => model.Email)
+
+                </div>
+                <div class="agile-email">
+                    <p>số điện thoại</p>
+                    @Html.TextBoxFor(model => model.SDT)
+                </div>
+
+                <div class="agile-profile">
+                    <p>Câu hỏi</p>
+                    @Html.DropDownList("CauHoi")
+                </div>
+                <div class="agile-email">
+                    <p>Câu trả lời</p>
+                    @Html.ValidationMessageFor(model => model.CauTraLoi, "", new { @class = "text-danger" })
+                    @Html.TextBoxFor(model => model.CauTraLoi)
+
+                </div>
+                <div>
+                    @Html.Captcha(5)
+                </div>
+
+                <div class="agile-submit">
+                    <input type="submit" value="register">
+                </div>
+                <div class="clear"></div>
+
+            }
+        </div>
+        <div class="clear"></div>
+        <footer>
+            &copy;2018 Wedlock Register Form. All Rights Reserved | Design by <a href="http://www.w3layouts.com" target="blank">w3layouts</a>
+        </footer>
+
+    </section>
+
+</body>
+
+</html>
+<style>
+    .text-danger {
+        color: red;
+    }
+    .didoi {
+        font-size: 20px;
+        font-weight: 500;
+        text-align: center;
+        text-transform: capitalize;
+        letter-spacing: 1px;
+        padding: 0.4em 0.4em;
+        width: 40%;
+        margin: 0.5em auto 0;
+        display: block;
+        border: none;
+        outline: none;
+        
+        color: #fff;
+        
+        box-sizing: border-box;
+</style>
+
+

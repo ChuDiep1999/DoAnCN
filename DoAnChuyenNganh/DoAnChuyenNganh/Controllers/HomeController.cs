@@ -1,4 +1,5 @@
-﻿using DoAnChuyenNganh.Models;
+﻿using CaptchaMvc.HtmlHelpers;
+using DoAnChuyenNganh.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -48,6 +49,57 @@ namespace DoAnChuyenNganh.Controllers
         {
             Session.Clear();//remove session
             return RedirectToAction("DangNhap");
+        }
+
+        public ActionResult DangKy()
+        {
+            ViewBag.CauHoi = new SelectList(LoadCauHoi());
+            return View();
+        }
+        [HttpPost]
+        public ActionResult DangKy(ThanhVien tv)
+        {
+            ViewBag.CauHoi = new SelectList(LoadCauHoi());
+            // Kiểm tra capcha hợp lệ
+            if (this.IsCaptchaValid("Captcha is not valid"))
+            {
+                if (ModelState.IsValid)
+                {
+                    var check = db.ThanhViens.FirstOrDefault(s => s.TenDangNhap == tv.TenDangNhap);
+                    if (check == null)
+                    {
+
+                        ViewBag.ThongBaoDangKy = "Đăng ký thành công";
+                        //thêm thành viên
+                        db.ThanhViens.Add(tv);
+                        db.SaveChanges();
+                        return View();
+                    }
+                    else
+                    {
+                        ViewBag.error = "Tài khoản đã tồn tại";
+                        ViewBag.ThongBaoDangKy = "Đăng ký thất bại";
+                        return View();
+                    }
+
+                }
+                else
+                {
+                    ViewBag.ThongBaoDangKy = "Đăng ký thất bại";
+                    return View();
+                }
+
+            }
+            ViewBag.ThongBaoDangKy = "Sai mã Captcha";
+            return View();
+        }
+        public List<string> LoadCauHoi()
+        {
+            List<string> listCauHoi = new List<string>();
+            listCauHoi.Add("Đội bóng mà bạn yêu thích");
+            listCauHoi.Add("Bạn yêu màu gì");
+            listCauHoi.Add("Bạn đến từ đâu");
+            return listCauHoi;
         }
     }
    

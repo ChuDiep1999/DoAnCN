@@ -335,6 +335,8 @@
     <Content Include="Content\LoginLayout\css\style.css" />
     <Content Include="Content\LoginLayout\images\women.jpg" />
     <Content Include="Content\PagedList.css" />
+    <Content Include="Content\RegisterLayout\css\style.css" />
+    <Content Include="Content\RegisterLayout\images\1.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -375,6 +377,9 @@
     <Content Include="Content\LoginLayout\fonts\fontawesome-webfont.woff" />
     <Content Include="Content\LoginLayout\fonts\fontawesome-webfont.woff2" />
     <Content Include="Content\LoginLayout\fonts\FontAwesome.otf" />
+    <Content Include="Content\RegisterLayout\fonts\Cabin-Regular.ttf" />
+    <Content Include="Content\RegisterLayout\fonts\Philosopher-Regular.ttf" />
+    <Content Include="Content\RegisterLayout\fonts\TitilliumWeb-Regular.ttf" />
     <None Include="Scripts\jquery-3.6.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.6.0.js" />
     <Content Include="Scripts\jquery-3.6.0.min.js" />
@@ -422,6 +427,7 @@
     <Content Include="Views\Layout\HomeLayout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\DangNhap.cshtml" />
+    <Content Include="Views\Home\DangKy.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

@@ -10,7 +10,7 @@ namespace DoAnChuyenNganh.Controllers
 {
     public class HomeController : Controller
     {
-        DataDoAnChuyenNganhEntities db = new DataDoAnChuyenNganhEntities();
+        Ship2hEntities db = new Ship2hEntities();
         public ActionResult Index()
         {
             if (Session["TaiKhoan"] != null)
@@ -39,6 +39,7 @@ namespace DoAnChuyenNganh.Controllers
             {
                 Session["TaiKhoan"] = tv;
                 Session["HoTen"] = data.FirstOrDefault().HoTen;
+                Session["Id"]= data.FirstOrDefault().MaThanhVien;
                 return View("Index");
                 
             }
@@ -66,21 +67,28 @@ namespace DoAnChuyenNganh.Controllers
                 if (ModelState.IsValid)
                 {
                     var check = db.ThanhViens.FirstOrDefault(s => s.TenDangNhap == tv.TenDangNhap);
-                    if (check == null)
-                    {
-
-                        ViewBag.ThongBaoDangKy = "Đăng ký thành công";
-                        //thêm thành viên
-                        db.ThanhViens.Add(tv);
-                        db.SaveChanges();
-                        return View();
+                    if(tv.MatKhau==tv.NhapLaiMatKhau){
+                        if (check == null)
+                        {
+                            ViewBag.ThongBaoDangKy = "Đăng ký thành công";
+                            //thêm thành viên
+                            db.ThanhViens.Add(tv);
+                            db.SaveChanges();
+                            return View();
+                        }
+                        else
+                        {
+                            ViewBag.error = "Tài khoản đã tồn tại";
+                            ViewBag.ThongBaoDangKy = "Đăng ký thất bại";
+                            return View();
+                        }
                     }
                     else
                     {
-                        ViewBag.error = "Tài khoản đã tồn tại";
+                        ViewBag.error2 = "Mật khẩu không trùng";
                         ViewBag.ThongBaoDangKy = "Đăng ký thất bại";
                         return View();
-                    }
+                    }    
 
                 }
                 else
@@ -101,7 +109,39 @@ namespace DoAnChuyenNganh.Controllers
             listCauHoi.Add("Bạn đến từ đâu");
             return listCauHoi;
         }
+        public ActionResult ThayDoiThongTin()
+        {
+            if (Session["TaiKhoan"] != null)
+            {
+                int id = (int)Session["Id"];
+                ThanhVien tv = db.ThanhViens.SingleOrDefault(n => n.MaThanhVien == id);
+                return View(tv);
+            }
+            else
+            {
+                return RedirectToAction("DangNhap");
+            }
+        }
+        [HttpPost]
+        public ActionResult ThayDoiThongTin(ThanhVien tv)
+        {
+            try {
+                ThanhVien ddhUpdate = db.ThanhViens.Single(n => n.MaThanhVien == tv.MaThanhVien);
+                ddhUpdate.HoTen = tv.HoTen;
+                ddhUpdate.Email = tv.Email;
+                db.SaveChanges();
+                Session["HoTen"] = tv.HoTen;
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                ViewBag.SuaThongTin = "Nhập liệu không chính xác, vui lòng kiểm tra lại";
+                return View(tv);
+            }
+        }
+
     }
+
    
 
 }

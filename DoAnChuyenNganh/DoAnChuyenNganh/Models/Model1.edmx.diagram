@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6d634c525a864c31968d26892b8cbc3f" Name="Diagram1">
+        <EntityTypeShape EntityType="Ship2hModel.CaLam" Width="1.5" PointX="3.75" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ship2hModel.ChiTietDonDatHang" Width="1.5" PointX="10.5" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ship2hModel.ChiTietMatHang" Width="1.5" PointX="10.5" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ship2hModel.DonDatHang" Width="1.5" PointX="8.25" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ship2hModel.Kho" Width="1.5" PointX="3.75" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ship2hModel.KhuVuc" Width="1.5" PointX="1.5" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ship2hModel.LoaiThanhVien" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ship2hModel.LoaiThanhVien_Quyen" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ship2hModel.MatHang" Width="1.5" PointX="8.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ship2hModel.Quyen" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ship2hModel.Shipper" Width="1.5" PointX="6" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ship2hModel.ThanhVien" Width="1.5" PointX="3" PointY="11.5" IsExpanded="true" />
+        <AssociationConnector Association="Ship2hModel.FK_Shipper_CaLam" ManuallyRouted="false" />
+        <AssociationConnector Association="Ship2hModel.FK_ChiTietDonDatHang_DonDatHang" ManuallyRouted="false" />
+        <AssociationConnector Association="Ship2hModel.FK_ChiTietDonDatHang_MatHang" ManuallyRouted="false" />
+        <AssociationConnector Association="Ship2hModel.FK_ChiTietMatHang_Kho" ManuallyRouted="false" />
+        <AssociationConnector Association="Ship2hModel.FK_ChiTietMatHang_MatHang" ManuallyRouted="false" />
+        <AssociationConnector Association="Ship2hModel.FK_DonDatHang_Shipper" ManuallyRouted="false" />
+        <AssociationConnector Association="Ship2hModel.FK_Kho_KhuVuc" ManuallyRouted="false" />
+        <AssociationConnector Association="Ship2hModel.FK_Shipper_Kho" ManuallyRouted="false" />
+        <AssociationConnector Association="Ship2hModel.FK_LoaiThanhVien_Quyen_LoaiThanhVien" ManuallyRouted="false" />
+        <AssociationConnector Association="Ship2hModel.FK_Shipper_LoaiThanhVien" ManuallyRouted="false" />
+        <AssociationConnector Association="Ship2hModel.FK_ThanhVien_LoaiThanhVien" ManuallyRouted="false" />
+        <AssociationConnector Association="Ship2hModel.FK_LoaiThanhVien_Quyen_Quyen" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

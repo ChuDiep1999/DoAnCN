@@ -13,7 +13,7 @@ namespace DoAnChuyenNganh.Models
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
-    
+
     public partial class ThanhVien
     {
         public int MaThanhVien { get; set; }
@@ -21,7 +21,7 @@ namespace DoAnChuyenNganh.Models
         [Required(ErrorMessage = "Tên đăng nhập không được để trống")]
         public string TenDangNhap { get; set; }
         [DisplayName("Mật Khẩu")]
-        [Required(ErrorMessage ="Mật khẩu không được để trống")]
+        [Required(ErrorMessage = "Mật khẩu không được để trống")]
         public string MatKhau { get; set; }
         [Required(ErrorMessage = "Họ tên không được để trống")]
         [DisplayName("Họ Tên")]
@@ -30,8 +30,7 @@ namespace DoAnChuyenNganh.Models
         public string DiaChi { get; set; }
         [DisplayName("Email")]
         [Required(ErrorMessage = "Email không được để trống")]
-        [RegularExpression(@"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z",
-        ErrorMessage = "Nhập đúng định dạng email")]
+        [EmailAddress(ErrorMessage ="Định dạng email không chính xác")]
         public string Email { get; set; }
         [DisplayName("Số điện thoại")]
         public string SDT { get; set; }
@@ -40,10 +39,10 @@ namespace DoAnChuyenNganh.Models
         [Required(ErrorMessage = "Câu trả lời không được để trống")]
         [DisplayName("Câu Trả Lời")]
         public string CauTraLoi { get; set; }
-        [Compare("MatKhau", ErrorMessage = "Mật khẩu xác thực không chính xác")]
         public string NhapLaiMatKhau { get; set; }
+
         public Nullable<int> MaLoaiThanhVien { get; set; }
-    
+
         public virtual LoaiThanhVien LoaiThanhVien { get; set; }
     }
 }

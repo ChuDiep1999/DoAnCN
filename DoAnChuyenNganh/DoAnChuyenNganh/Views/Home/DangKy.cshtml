@@ -61,7 +61,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 </div>
                 <div class="agile-email">
                     <p>Nhập lại mật khẩu</p>
-                    @Html.ValidationMessageFor(model => model.NhapLaiMatKhau, "", new { @class = "text-danger" })
+                    <p class="text-danger">@ViewBag.error2</p>
                     @Html.PasswordFor(model => model.NhapLaiMatKhau)
 
                 </div>
@@ -133,10 +133,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         display: block;
         border: none;
         outline: none;
-        
         color: #fff;
-        
         box-sizing: border-box;
+    }
 </style>
 
 

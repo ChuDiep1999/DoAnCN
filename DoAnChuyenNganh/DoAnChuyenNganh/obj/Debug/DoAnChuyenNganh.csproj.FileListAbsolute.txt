@@ -87,8 +87,8 @@ C:\Users\chuva\source\repos\DoAnCN\DoAnChuyenNganh\DoAnChuyenNganh\bin\Antlr3.Ru
 C:\Users\chuva\source\repos\DoAnCN\DoAnChuyenNganh\DoAnChuyenNganh\bin\Microsoft.AspNet.Identity.Core.xml
 C:\Users\chuva\source\repos\DoAnCN\DoAnChuyenNganh\DoAnChuyenNganh\bin\Microsoft.AspNet.Identity.Owin.xml
 C:\Users\chuva\source\repos\DoAnCN\DoAnChuyenNganh\DoAnChuyenNganh\bin\Microsoft.AspNet.Identity.EntityFramework.xml
-C:\Users\chuva\source\repos\DoAnCN\DoAnChuyenNganh\DoAnChuyenNganh\obj\Debug\DoAnChuyenNganh.csproj.AssemblyReference.cache
 C:\Users\chuva\source\repos\DoAnCN\DoAnChuyenNganh\DoAnChuyenNganh\obj\Debug\DoAnChuyenNganh.csproj.CoreCompileInputs.cache
 C:\Users\chuva\source\repos\DoAnCN\DoAnChuyenNganh\DoAnChuyenNganh\obj\Debug\DoAnChuyenNganh.csproj.CopyComplete
 C:\Users\chuva\source\repos\DoAnCN\DoAnChuyenNganh\DoAnChuyenNganh\obj\Debug\DoAnChuyenNganh.dll
 C:\Users\chuva\source\repos\DoAnCN\DoAnChuyenNganh\DoAnChuyenNganh\obj\Debug\DoAnChuyenNganh.pdb
+C:\Users\chuva\source\repos\DoAnCN\DoAnChuyenNganh\DoAnChuyenNganh\obj\Debug\DoAnChuyenNganh.csproj.AssemblyReference.cache

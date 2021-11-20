@@ -34,17 +34,17 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <body>
     <section class="agile-header">
         <div class="agile-heading">
-            <h1><span class="image"></span><label>w</label>ed<label>l</label>ock register form</h1>
+            <h1><span class="image"></span><label>Đăng Ký</label></h1>
         </div>
         <div class="agile-form">
             @using (Html.BeginForm())
             {
                 @Html.AntiForgeryToken()
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <div >
-                <h4 style="font-weight:bold;color:red;"class="didoi">@ViewBag.ThongBaoDangKy</h4>
-            </div>
-                
+                <div>
+                    <h4 style="font-weight:bold;color:red;" class="didoi">@ViewBag.ThongBaoDangKy</h4>
+                </div>
+
 
                 <div class="agile-email">
                     <p>tên đăng nhập</p>
@@ -106,8 +106,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 <div class="clear"></div>
 
             }
+            <div>
+                @Html.ActionLink("Quay trở lại đăng nhập", "DangNhap")
+            </div>
         </div>
         <div class="clear"></div>
+
         <footer>
             &copy;2018 Wedlock Register Form. All Rights Reserved | Design by <a href="http://www.w3layouts.com" target="blank">w3layouts</a>
         </footer>

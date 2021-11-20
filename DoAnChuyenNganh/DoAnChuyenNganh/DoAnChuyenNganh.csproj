@@ -184,6 +184,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\TaiKhoanController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -429,6 +430,7 @@
     <Content Include="Views\Home\DangNhap.cshtml" />
     <Content Include="Views\Home\DangKy.cshtml" />
     <Content Include="Views\Home\ThayDoiThongTin.cshtml" />
+    <Content Include="Views\TaiKhoan\ThongTinTaiKhoan.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

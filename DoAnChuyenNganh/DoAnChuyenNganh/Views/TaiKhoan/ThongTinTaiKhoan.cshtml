@@ -1,6 +1,6 @@
 ﻿@model DoAnChuyenNganh.Models.ThanhVien
 @{
-    ViewBag.Title = "ThongTinTaiKhoan";
+    ViewBag.Title = "Thông tin tài khoản";
     Layout = "~/Views/Layout/HomeLayout.cshtml";
 }
 
@@ -42,6 +42,7 @@
                         @Html.ValidationMessageFor(model => model.SDT, "", new { @class = "text-danger" })
                     </div>
                 </div>
+             
                 <div class="col-sm-offset-2">
                     <button type="submit" class="btn btn-default">Cập nhật thông tin</button>
                 </div>

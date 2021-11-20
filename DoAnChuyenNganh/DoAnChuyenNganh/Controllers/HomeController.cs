@@ -40,7 +40,7 @@ namespace DoAnChuyenNganh.Controllers
                 Session["TaiKhoan"] = tv;
                 Session["HoTen"] = data.FirstOrDefault().HoTen;
                 Session["Id"]= data.FirstOrDefault().MaThanhVien;
-                return View("Index");
+                return RedirectToAction("Index","Home");
                 
             }
             ViewBag.ThongBaoDangNhap = "Thông tin đăng nhập không chính xác";
@@ -109,36 +109,7 @@ namespace DoAnChuyenNganh.Controllers
             listCauHoi.Add("Bạn đến từ đâu");
             return listCauHoi;
         }
-        public ActionResult ThayDoiThongTin()
-        {
-            if (Session["TaiKhoan"] != null)
-            {
-                int id = (int)Session["Id"];
-                ThanhVien tv = db.ThanhViens.SingleOrDefault(n => n.MaThanhVien == id);
-                return View(tv);
-            }
-            else
-            {
-                return RedirectToAction("DangNhap");
-            }
-        }
-        [HttpPost]
-        public ActionResult ThayDoiThongTin(ThanhVien tv)
-        {
-            try {
-                ThanhVien ddhUpdate = db.ThanhViens.Single(n => n.MaThanhVien == tv.MaThanhVien);
-                ddhUpdate.HoTen = tv.HoTen;
-                ddhUpdate.Email = tv.Email;
-                db.SaveChanges();
-                Session["HoTen"] = tv.HoTen;
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                ViewBag.SuaThongTin = "Nhập liệu không chính xác, vui lòng kiểm tra lại";
-                return View(tv);
-            }
-        }
+        
 
     }
 

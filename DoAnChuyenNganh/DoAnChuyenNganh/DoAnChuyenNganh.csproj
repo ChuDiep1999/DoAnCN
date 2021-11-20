@@ -429,8 +429,8 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\DangNhap.cshtml" />
     <Content Include="Views\Home\DangKy.cshtml" />
-    <Content Include="Views\Home\ThayDoiThongTin.cshtml" />
     <Content Include="Views\TaiKhoan\ThongTinTaiKhoan.cshtml" />
+    <Content Include="Views\TaiKhoan\DoiMatKhau.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

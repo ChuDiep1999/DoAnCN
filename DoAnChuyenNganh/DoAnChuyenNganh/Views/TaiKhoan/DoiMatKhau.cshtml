@@ -1,0 +1,46 @@
+﻿@model DoAnChuyenNganh.Models.ThanhVien
+@{
+    ViewBag.Title = "Đổi mật khẩu";
+    Layout = "~/Views/Layout/HomeLayout.cshtml";
+}
+
+<div class=" form-grids row form-grids-right">
+    <div class="widget-shadow " data-example-id="basic-forms">
+        <div class="form-title">
+            <h4>Đổi mật khẩu</h4>
+        </div>
+        <div class="form-body">
+            @using (Html.BeginForm("DoiMatKhau", "TaiKhoan", FormMethod.Post, new { @class = "form-horizontal" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.Hidden("MaThanhVien", Model.MaThanhVien);
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Mật khẩu cũ</label>
+                    <div class="col-sm-9">
+                        @Html.EditorFor(model => model.MatKhauCu, new { htmlAttributes = new {@type="password" ,@class = "form-control", @placeholder = " Nhập mật khẩu cũ" } })
+                        <p class="text-danger">@ViewBag.MatKhauCu</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Mật khẩu mới</label>
+                    <div class="col-sm-9">
+                        @Html.EditorFor(model => model.MatKhauMoi, new { htmlAttributes = new { @type = "password", @class = "form-control", @placeholder = " Nhập mật khẩu mới" } })
+                        <p class="text-danger">@ViewBag.MatKhauMoi</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Xác thực mật khẩu mới</label>
+                    <div class="col-sm-9">
+                        @Html.EditorFor(model => model.NhapLaiMatKhauMoi, new { htmlAttributes = new { @type = "password", @class = "form-control", @placeholder = " Nhập lại mật khẩu mới" } })
+                        <p class="text-danger">@ViewBag.NhapLaiMatKhau</p>
+                    </div>
+                </div>
+                
+                <div class="col-sm-offset-2">
+                    <button type="submit" class="btn btn-default">Đổi mật khẩu</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+

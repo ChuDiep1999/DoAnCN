@@ -40,7 +40,10 @@ namespace DoAnChuyenNganh.Models
         [DisplayName("Câu Trả Lời")]
         public string CauTraLoi { get; set; }
         public string NhapLaiMatKhau { get; set; }
+        public string NhapLaiMatKhauMoi { get; set; }
 
+        public string MatKhauMoi { get; set; }
+        public string MatKhauCu { get; set; }
         public Nullable<int> MaLoaiThanhVien { get; set; }
 
         public virtual LoaiThanhVien LoaiThanhVien { get; set; }

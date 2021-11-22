@@ -1,0 +1,32 @@
+﻿@model DoAnChuyenNganh.Models.KhuVuc
+@{
+    ViewBag.Title = "ChinhSua";
+    Layout = "~/Views/Layout/HomeLayout.cshtml";
+}
+
+<h3 class="title1">Chỉnh sửa khu vực</h3>
+
+<div class="form-three widget-shadow">
+    @using (Html.BeginForm("ChinhSua", "QuanLyKhuVuc", FormMethod.Post, new { @enctype = "multipart/form-data", @class = "form-horizontal" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.Hidden("MaKhuVuc", Model.MaKhuVuc);
+        <div class="form-group">
+            <label for="focusedinput" class="col-sm-2 control-label">Tên Khu Vực</label>
+            <div class="col-sm-8">
+                @Html.EditorFor(model=> model.TenKhuVuc, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nhập tên khu vực" } })
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="focusedinput" class="col-sm-2 control-label">Diện tích</label>
+            <div class="col-sm-8">
+                @Html.EditorFor(model => model.DienTich, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nhập diện tích" } })
+            </div>
+        </div>     
+        <button type="submit" class="btn btn-default">Chỉnh Sửa Thông Tin Khu Vực</button>
+    }
+</div>
+<div>
+    @Html.ActionLink("Quay lại danh sách", "Index")
+</div>
+

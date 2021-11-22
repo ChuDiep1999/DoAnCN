@@ -1,13 +1,13 @@
 ﻿@using DoAnChuyenNganh.Models;
-@model IEnumerable<Kho>
+@model IEnumerable<KhuVuc>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Layout/HomeLayout.cshtml";
     WebGrid grid = new WebGrid(source: Model, rowsPerPage: 10);
 }
-<h2 class="title1">Danh sách Kho</h2>
 
-@Html.ActionLink("Thêm Kho", "ThemKho", null, new { @style = "background-color: aqua;", @class = "btn btn-sucess" })
+<h2 class="title1">Danh sách khu vực</h2>
+@Html.ActionLink("Thêm Khu Vực", "ThemKhuVuc", null, new { @style = "background-color: aqua;", @class = "btn btn-sucess" })
 <br />
 <br />
 @*Thể hiện dữ liệu thông qua control Webgrid*@
@@ -18,11 +18,11 @@
          rowStyle: "gridRow",
          alternatingRowStyle: "gridAltRow",
          columns: grid.Columns(
-            grid.Column("MaKho", "Mã Kho"),
-            grid.Column("TenKho", "Tên Kho"),
-            grid.Column("MaKhuVuc", header: "Thuộc Khu Vực", format: p => p.MaKhuVuc != null ? p.KhuVuc.TenKhuVuc : ""),
-            grid.Column(format: p => Html.ActionLink("Chỉnh sửa", "ChinhSua", new { id = p.MaKho })),
-            grid.Column(format: p => Html.ActionLink("Xóa", "Xoa", new { id = p.MaKho }))
+            grid.Column("MaKhuVuc", "Mã Khu Vực"),
+            grid.Column("TenKhuVuc", "Tên Khu Vực"),
+            grid.Column("DienTich", "Diện tích"),
+            grid.Column(format: p => Html.ActionLink("Chỉnh sửa", "ChinhSua", new { id = p.MaKhuVuc })),
+            grid.Column(format: p => Html.ActionLink("Xóa", "Xoa", new { id = p.MaKhuVuc }))
             ))
 <style>
     .divTable {
@@ -36,7 +36,7 @@
 
     .gridHead {
         background-color: Green;
-    }0
+    }
 
         .gridHead > th > a {
             color: #fff;

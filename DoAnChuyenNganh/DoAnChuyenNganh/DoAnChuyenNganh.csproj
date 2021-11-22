@@ -183,6 +183,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\QuanLyKhuVucController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\QuanLyKhoController.cs" />
     <Compile Include="Controllers\TaiKhoanController.cs" />
@@ -436,8 +437,14 @@
     <Content Include="Views\QuanLyKho\ThemKho.cshtml" />
     <Content Include="Views\QuanLyKho\ChinhSua.cshtml" />
     <Content Include="Views\QuanLyKho\Xoa.cshtml" />
+    <Content Include="Views\QuanLyKhuVuc\Index.cshtml" />
+    <Content Include="Views\QuanLyKhuVuc\ThemKhuVuc.cshtml" />
+    <Content Include="Views\QuanLyKhuVuc\ChinhSua.cshtml" />
+    <Content Include="Views\QuanLyKhuVuc\Xoa.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Views\KhuVuc\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
     <Content Include="Content\bootstrap.rtl.css.map" />

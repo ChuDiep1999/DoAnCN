@@ -28,6 +28,8 @@ namespace DoAnChuyenNganh.Models
         public Nullable<int> MaLoaiThanhVien { get; set; }
         public Nullable<int> MaCa { get; set; }
         public string DinhVi { get; set; }
+        public string TenDangNhap { get; set; }
+        public string MatKhau { get; set; }
     
         public virtual CaLam CaLam { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

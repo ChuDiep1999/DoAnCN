@@ -15,7 +15,7 @@ namespace DoAnChuyenNganh.Models
     public partial class LoaiThanhVien_Quyen
     {
         public int MaLoaiThanhVien { get; set; }
-        public int MaQuyen { get; set; }
+        public string MaQuyen { get; set; }
         public string GhiChu { get; set; }
     
         public virtual LoaiThanhVien LoaiThanhVien { get; set; }

@@ -110,6 +110,8 @@
           <ScalarProperty Name="MaLoaiThanhVien" ColumnName="MaLoaiThanhVien" />
           <ScalarProperty Name="MaCa" ColumnName="MaCa" />
           <ScalarProperty Name="DinhVi" ColumnName="DinhVi" />
+          <ScalarProperty Name="TenDangNhap" ColumnName="TenDangNhap" />
+          <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -1,0 +1,39 @@
+﻿@model DoAnChuyenNganh.Models.Kho
+@{
+    ViewBag.Title = "ChinhSua";
+    Layout = "~/Views/Layout/HomeLayout.cshtml";
+}
+
+
+<h3 class="title1">Chỉnh sửa kho</h3>
+
+<div class="form-three widget-shadow">
+    @using (Html.BeginForm("ChinhSua", "QuanLyKho", FormMethod.Post, new { @enctype = "multipart/form-data", @class = "form-horizontal" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.Hidden("MaKho", Model.MaKho);
+        <div class="form-group">
+            <label for="focusedinput" class="col-sm-2 control-label">Tên Kho</label>
+            <div class="col-sm-8">
+                @Html.EditorFor(model => model.TenKho, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nhập tên kho" } })
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="focusedinput" class="col-sm-2 control-label">Địa chỉ</label>
+            <div class="col-sm-8">
+                @Html.EditorFor(model => model.DiaChi, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nhập địa chỉ" } })
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="focusedinput" class="col-sm-2 control-label">Thuộc khu vực</label>
+            <div class="col-sm-8">
+                @Html.DropDownList("MaKhuVuc", null, new { @class = "form-control" })
+            </div>
+        </div>
+        <button type="submit" class="btn btn-default">Chỉnh Sửa Thông Tin Kho</button>
+    }
+</div>
+<div>
+    @Html.ActionLink("Quay lại danh sách", "Index")
+</div>
+

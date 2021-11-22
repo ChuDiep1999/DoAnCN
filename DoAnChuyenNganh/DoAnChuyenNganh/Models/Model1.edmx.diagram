@@ -4,19 +4,19 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="6d634c525a864c31968d26892b8cbc3f" Name="Diagram1">
-        <EntityTypeShape EntityType="Ship2hModel.CaLam" Width="1.5" PointX="3.75" PointY="2.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Ship2hModel.ChiTietDonDatHang" Width="1.5" PointX="10.5" PointY="5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Ship2hModel.ChiTietMatHang" Width="1.5" PointX="10.5" PointY="1.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Ship2hModel.DonDatHang" Width="1.5" PointX="8.25" PointY="5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Ship2hModel.Kho" Width="1.5" PointX="3.75" PointY="8.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Ship2hModel.KhuVuc" Width="1.5" PointX="1.5" PointY="8.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="Ship2hModel.LoaiThanhVien" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Ship2hModel.LoaiThanhVien_Quyen" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Ship2hModel.MatHang" Width="1.5" PointX="8.25" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="Ship2hModel.Quyen" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="true" />
+      <Diagram DiagramId="c5686fab370c4cc6977e33fdac5ff2c4" Name="Diagram1">
+        <EntityTypeShape EntityType="Ship2hModel.CaLam" Width="1.5" PointX="3.75" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ship2hModel.ChiTietDonDatHang" Width="1.5" PointX="10.5" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ship2hModel.ChiTietMatHang" Width="1.5" PointX="10.5" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ship2hModel.DonDatHang" Width="1.5" PointX="8.25" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ship2hModel.Kho" Width="1.5" PointX="3.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ship2hModel.KhuVuc" Width="1.5" PointX="1.5" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ship2hModel.LoaiThanhVien" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ship2hModel.LoaiThanhVien_Quyen" Width="1.5" PointX="3" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ship2hModel.MatHang" Width="1.5" PointX="8.25" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ship2hModel.Quyen" Width="1.5" PointX="0.75" PointY="2.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Ship2hModel.Shipper" Width="1.5" PointX="6" PointY="4.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="Ship2hModel.ThanhVien" Width="1.5" PointX="3" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ship2hModel.ThanhVien" Width="1.5" PointX="3" PointY="12.125" IsExpanded="true" />
         <AssociationConnector Association="Ship2hModel.FK_Shipper_CaLam" ManuallyRouted="false" />
         <AssociationConnector Association="Ship2hModel.FK_ChiTietDonDatHang_DonDatHang" ManuallyRouted="false" />
         <AssociationConnector Association="Ship2hModel.FK_ChiTietDonDatHang_MatHang" ManuallyRouted="false" />

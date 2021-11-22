@@ -67,8 +67,8 @@
       <PropertyRef Name="MaLoaiThanhVien" />
       <PropertyRef Name="MaQuyen" />
     </Key>
-    <Property Name="MaLoaiThanhVien" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="MaQuyen" Type="int" Nullable="false" />
+    <Property Name="MaLoaiThanhVien" Type="int" Nullable="false" />
+    <Property Name="MaQuyen" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="GhiChu" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="MatHang">
@@ -86,7 +86,7 @@
     <Key>
       <PropertyRef Name="MaQuyen" />
     </Key>
-    <Property Name="MaQuyen" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MaQuyen" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="TenQuyen" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="Shipper">
@@ -101,6 +101,8 @@
     <Property Name="MaLoaiThanhVien" Type="int" />
     <Property Name="MaCa" Type="int" />
     <Property Name="DinhVi" Type="nvarchar(max)" />
+    <Property Name="TenDangNhap" Type="nvarchar" MaxLength="50" />
+    <Property Name="MatKhau" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="ThanhVien">
     <Key>

@@ -81,8 +81,8 @@
       <PropertyRef Name="MaLoaiThanhVien" />
       <PropertyRef Name="MaQuyen" />
     </Key>
-    <Property Name="MaLoaiThanhVien" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="MaQuyen" Type="Int32" Nullable="false" />
+    <Property Name="MaLoaiThanhVien" Type="Int32" Nullable="false" />
+    <Property Name="MaQuyen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="GhiChu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="LoaiThanhVien" Relationship="Self.FK_LoaiThanhVien_Quyen_LoaiThanhVien" FromRole="LoaiThanhVien_Quyen" ToRole="LoaiThanhVien" />
     <NavigationProperty Name="Quyen" Relationship="Self.FK_LoaiThanhVien_Quyen_Quyen" FromRole="LoaiThanhVien_Quyen" ToRole="Quyen" />
@@ -104,7 +104,7 @@
     <Key>
       <PropertyRef Name="MaQuyen" />
     </Key>
-    <Property Name="MaQuyen" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MaQuyen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="TenQuyen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="LoaiThanhVien_Quyen" Relationship="Self.FK_LoaiThanhVien_Quyen_Quyen" FromRole="Quyen" ToRole="LoaiThanhVien_Quyen" />
   </EntityType>
@@ -120,6 +120,8 @@
     <Property Name="MaLoaiThanhVien" Type="Int32" />
     <Property Name="MaCa" Type="Int32" />
     <Property Name="DinhVi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TenDangNhap" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MatKhau" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="CaLam" Relationship="Self.FK_Shipper_CaLam" FromRole="Shipper" ToRole="CaLam" />
     <NavigationProperty Name="DonDatHangs" Relationship="Self.FK_DonDatHang_Shipper" FromRole="Shipper" ToRole="DonDatHang" />
     <NavigationProperty Name="Kho" Relationship="Self.FK_Shipper_Kho" FromRole="Shipper" ToRole="Kho" />

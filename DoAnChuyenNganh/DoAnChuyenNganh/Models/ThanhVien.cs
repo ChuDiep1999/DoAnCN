@@ -30,7 +30,7 @@ namespace DoAnChuyenNganh.Models
         public string DiaChi { get; set; }
         [DisplayName("Email")]
         [Required(ErrorMessage = "Email không được để trống")]
-        [EmailAddress(ErrorMessage ="Định dạng email không chính xác")]
+        [EmailAddress(ErrorMessage = "Định dạng email không chính xác")]
         public string Email { get; set; }
         [DisplayName("Số điện thoại")]
         public string SDT { get; set; }
@@ -45,7 +45,7 @@ namespace DoAnChuyenNganh.Models
         public string MatKhauMoi { get; set; }
         public string MatKhauCu { get; set; }
         public Nullable<int> MaLoaiThanhVien { get; set; }
-
+    
         public virtual LoaiThanhVien LoaiThanhVien { get; set; }
     }
 }

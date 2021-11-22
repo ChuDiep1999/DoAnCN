@@ -117,5 +117,28 @@ namespace DoAnChuyenNganh.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+        [HttpGet]
+        public ActionResult XemSoLuongMatHang(int? id)
+        {
+            if (Session["TaiKhoan"] != null)
+            {
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                Kho model = db.Khoes.SingleOrDefault(n => n.MaKho == id);
+                if (model == null)
+                {
+                    return HttpNotFound();
+                }
+                var listChiTietMH = db.ChiTietMatHangs.Where(n => n.MaKho == id);
+                ViewBag.ListChiTietMH = listChiTietMH;
+                return View(model);
+            }
+            else
+            {
+                return RedirectToAction("DangNhap", "Home");
+            }
+        }
     }
 }

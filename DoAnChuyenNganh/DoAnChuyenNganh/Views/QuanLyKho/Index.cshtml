@@ -22,7 +22,8 @@
             grid.Column("TenKho", "Tên Kho"),
             grid.Column("MaKhuVuc", header: "Thuộc Khu Vực", format: p => p.MaKhuVuc != null ? p.KhuVuc.TenKhuVuc : ""),
             grid.Column(format: p => Html.ActionLink("Chỉnh sửa", "ChinhSua", new { id = p.MaKho })),
-            grid.Column(format: p => Html.ActionLink("Xóa", "Xoa", new { id = p.MaKho }))
+            grid.Column(format: p => Html.ActionLink("Xóa", "Xoa", new { id = p.MaKho })),
+            grid.Column(format: p => Html.ActionLink("Xem các mặt hàng trong kho", "XemSoLuongMatHang", new { id = p.MaKho }))
             ))
 <style>
     .divTable {

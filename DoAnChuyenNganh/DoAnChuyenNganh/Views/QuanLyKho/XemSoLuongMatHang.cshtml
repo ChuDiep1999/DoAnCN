@@ -1,0 +1,42 @@
+﻿@using DoAnChuyenNganh.Models
+@model Kho
+@{
+    ViewBag.Title = "XemSoLuongMatHang";
+    Layout = "~/Views/Layout/HomeLayout.cshtml";
+}
+
+<h2>Thông tin <font color="#f65e84">@Model.TenKho</font></h2>
+@using (Html.BeginForm())
+{
+<div>
+    @{ IEnumerable<ChiTietMatHang> listChiTietMH = (IEnumerable<ChiTietMatHang>)ViewBag.ListChiTietMH;}
+    <table class="table" id="table">
+        <tr>
+            <td colspan="4">
+                <table style="width:100%;">
+                    <tr>
+                        <td>Mã kho: <b style="color:red;">@Model.MaKho @Html.Hidden("MaKho", @Model.MaKho)</b></td>
+                        <td>Tên kho: <b style="color:red;">@Model.TenKho </b></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td><b>Sản phẩm</b></td>
+            <td><b>Hình ảnh</b></td>
+            <td><b>Số lượng tồn</b></td>
+        </tr>
+        @foreach (var item in listChiTietMH)
+        {
+            <tr>
+                <td>@item.MatHang.TenMatHang</td>
+                <td><img width="150" height="150" src="@Url.Content("~/Content/Images/"+item.MatHang.HinhAnh)" /></td>
+                <td>@item.SoLuongTon</td>
+            </tr>
+        }
+    </table>
+</div>
+<div>
+    @Html.ActionLink("Quay lại danh sách", "Index")
+</div>
+}

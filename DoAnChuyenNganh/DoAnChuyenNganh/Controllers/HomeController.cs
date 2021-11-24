@@ -23,7 +23,20 @@ namespace DoAnChuyenNganh.Controllers
             }
 
         }
+        public ActionResult Index2()
+        {
+            if (Session["TaiKhoan"] != null)
+            {
+                var listSP = db.Shippers.Where(n=>n.DangLam==true);
+                return View(listSP);
+            }
+            else
+            {
+                return RedirectToAction("DangNhap");
+            }
 
+        }
+        
         public ActionResult DangNhap()
         {
             return View();
@@ -40,6 +53,7 @@ namespace DoAnChuyenNganh.Controllers
                 Session["TaiKhoan"] = tv;
                 Session["HoTen"] = data.FirstOrDefault().HoTen;
                 Session["Id"]= data.FirstOrDefault().MaThanhVien;
+                Session["LoaiThanhVien"] = data.FirstOrDefault().LoaiThanhVien;
                 return RedirectToAction("Index","Home");
                 
             }

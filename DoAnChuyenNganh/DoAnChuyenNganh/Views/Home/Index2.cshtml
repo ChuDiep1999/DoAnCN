@@ -1,0 +1,47 @@
+﻿@model IEnumerable<DoAnChuyenNganh.Models.Shipper>
+
+@{
+    ViewBag.Title = "Index2";
+    Layout = "~/Views/Layout/HomeLayout.cshtml";
+}
+
+<h2>Index2</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<div class="panel-body widget-shadow">
+    <h4>Danh sách shipper đang rảnh :</h4>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Mã Shipper</th>
+                <th>Họ tên</th>
+                <th>Thuộc Kho</th>
+                <th>Ca làm</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MaShipper)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.HoTen)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Kho.TenKho)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem=> item.CaLam.CaLam1)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DangLam)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

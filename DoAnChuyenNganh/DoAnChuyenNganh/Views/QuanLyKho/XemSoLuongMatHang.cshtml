@@ -8,9 +8,9 @@
 <h2>Thông tin <font color="#f65e84">@Model.TenKho</font></h2>
 @using (Html.BeginForm())
 {
-<div>
+<div class="bs-example widget-shadow">
     @{ IEnumerable<ChiTietMatHang> listChiTietMH = (IEnumerable<ChiTietMatHang>)ViewBag.ListChiTietMH;}
-    <table class="table" id="table">
+    <table class="table table-hover" id="table">
         <tr>
             <td colspan="4">
                 <table style="width:100%;">
@@ -36,6 +36,7 @@
         }
     </table>
 </div>
+
 <div>
     @Html.ActionLink("Quay lại danh sách", "Index")
 </div>

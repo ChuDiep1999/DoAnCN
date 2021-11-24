@@ -183,9 +183,11 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\QuanLyDonHangController.cs" />
     <Compile Include="Controllers\QuanLyKhuVucController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\QuanLyKhoController.cs" />
+    <Compile Include="Controllers\ShipperController.cs" />
     <Compile Include="Controllers\TaiKhoanController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -200,6 +202,7 @@
     <Compile Include="Models\ChiTietMatHang.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ItemShipper.cs" />
     <Compile Include="Models\DonDatHang.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -334,12 +337,72 @@
     <Content Include="Content\HomeLayout\js\SimpleChart.js" />
     <Content Include="Content\HomeLayout\js\utils.js" />
     <Content Include="Content\HomeLayout\js\validator.min.js" />
+    <Content Include="Content\Images\1.jpg" />
+    <Content Include="Content\Images\2.jpg" />
+    <Content Include="Content\Images\3.jpg" />
+    <Content Include="Content\Images\4.jpg" />
+    <Content Include="Content\Images\5.jpg" />
+    <Content Include="Content\Images\6.jpg" />
+    <Content Include="Content\Images\7.jpg" />
+    <Content Include="Content\Images\8.jpg" />
     <Content Include="Content\LoginLayout\css\font-awesome.css" />
     <Content Include="Content\LoginLayout\css\style.css" />
     <Content Include="Content\LoginLayout\images\women.jpg" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\RegisterLayout\css\style.css" />
     <Content Include="Content\RegisterLayout\images\1.jpg" />
+    <Content Include="Content\ShipperLayout\css\bootstrap.min.css" />
+    <Content Include="Content\ShipperLayout\css\font-awesome.css" />
+    <Content Include="Content\ShipperLayout\css\font.css" />
+    <Content Include="Content\ShipperLayout\css\jqvmap.css" />
+    <Content Include="Content\ShipperLayout\css\lightbox.css" />
+    <Content Include="Content\ShipperLayout\css\minimal.css" />
+    <Content Include="Content\ShipperLayout\css\monthly.css" />
+    <Content Include="Content\ShipperLayout\css\morris.css" />
+    <Content Include="Content\ShipperLayout\css\style-responsive.css" />
+    <Content Include="Content\ShipperLayout\css\style.css" />
+    <Content Include="Content\ShipperLayout\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\ShipperLayout\images\1.png" />
+    <Content Include="Content\ShipperLayout\images\2.png" />
+    <Content Include="Content\ShipperLayout\images\3.png" />
+    <Content Include="Content\ShipperLayout\images\bg.jpg" />
+    <Content Include="Content\ShipperLayout\images\close.png" />
+    <Content Include="Content\ShipperLayout\images\g1.jpg" />
+    <Content Include="Content\ShipperLayout\images\g2.jpg" />
+    <Content Include="Content\ShipperLayout\images\g3.jpg" />
+    <Content Include="Content\ShipperLayout\images\g4.jpg" />
+    <Content Include="Content\ShipperLayout\images\g5.jpg" />
+    <Content Include="Content\ShipperLayout\images\g6.jpg" />
+    <Content Include="Content\ShipperLayout\images\g7.jpg" />
+    <Content Include="Content\ShipperLayout\images\g8.jpg" />
+    <Content Include="Content\ShipperLayout\images\g9.jpg" />
+    <Content Include="Content\ShipperLayout\images\mail.png" />
+    <Content Include="Content\ShipperLayout\images\minimal.png" />
+    <Content Include="Content\ShipperLayout\images\nav-expand.png" />
+    <Content Include="Content\ShipperLayout\images\next.png" />
+    <Content Include="Content\ShipperLayout\images\pass.png" />
+    <Content Include="Content\ShipperLayout\images\prev.png" />
+    <Content Include="Content\ShipperLayout\images\search-icon.png" />
+    <Content Include="Content\ShipperLayout\js\bootstrap.js" />
+    <Content Include="Content\ShipperLayout\js\jquery.dcjqaccordion.2.7.js" />
+    <Content Include="Content\ShipperLayout\js\jquery.fileupload.js" />
+    <Content Include="Content\ShipperLayout\js\jquery.min.js" />
+    <Content Include="Content\ShipperLayout\js\jquery.nicescroll.js" />
+    <Content Include="Content\ShipperLayout\js\jquery.scrollTo.js" />
+    <Content Include="Content\ShipperLayout\js\jquery.slimscroll.js" />
+    <Content Include="Content\ShipperLayout\js\jquery.vmap.asia.js" />
+    <Content Include="Content\ShipperLayout\js\jquery.vmap.australia.js" />
+    <Content Include="Content\ShipperLayout\js\jquery.vmap.europe.js" />
+    <Content Include="Content\ShipperLayout\js\jquery.vmap.js" />
+    <Content Include="Content\ShipperLayout\js\jquery.vmap.sampledata.js" />
+    <Content Include="Content\ShipperLayout\js\jquery.vmap.world.js" />
+    <Content Include="Content\ShipperLayout\js\jquery2.0.3.min.js" />
+    <Content Include="Content\ShipperLayout\js\lightbox-plus-jquery.min.js" />
+    <Content Include="Content\ShipperLayout\js\monthly.js" />
+    <Content Include="Content\ShipperLayout\js\morris.js" />
+    <Content Include="Content\ShipperLayout\js\raphael-min.js" />
+    <Content Include="Content\ShipperLayout\js\script.js" />
+    <Content Include="Content\ShipperLayout\js\scripts.js" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -383,6 +446,13 @@
     <Content Include="Models\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
+    <Content Include="Content\ShipperLayout\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\ShipperLayout\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\ShipperLayout\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\ShipperLayout\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\ShipperLayout\fonts\FontAwesome.otf" />
+    <Content Include="Content\ShipperLayout\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\ShipperLayout\fonts\glyphicons-halflings-regular.woff2" />
     <None Include="Scripts\jquery-3.6.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.6.0.js" />
     <Content Include="Scripts\jquery-3.6.0.min.js" />
@@ -442,10 +512,20 @@
     <Content Include="Views\QuanLyKhuVuc\ChinhSua.cshtml" />
     <Content Include="Views\QuanLyKhuVuc\Xoa.cshtml" />
     <Content Include="Views\QuanLyKho\XemSoLuongMatHang.cshtml" />
+    <Content Include="Views\QuanLyDonHang\ChuaGiaoDaThanhToan.cshtml" />
+    <Content Include="Views\QuanLyDonHang\ChuaThanhToanChuaGiao.cshtml" />
+    <Content Include="Views\QuanLyDonHang\DaThanhToanDaGiao.cshtml" />
+    <Content Include="Views\QuanLyDonHang\DonHangChuaCoShipper.cshtml" />
+    <Content Include="Views\QuanLyDonHang\ChonShipper.cshtml" />
+    <Content Include="Views\QuanLyDonHang\DanhSachShipperPartial.cshtml" />
+    <Content Include="Views\Home\Index2.cshtml" />
+    <Content Include="Views\QuanLyDonHang\DuyetDonHang.cshtml" />
+    <Content Include="Views\Shipper\DangNhap.cshtml" />
+    <Content Include="Views\Layout\_ShipperLayout.cshtml" />
+    <Content Include="Views\Shipper\Index.cshtml" />
+    <Content Include="Views\Shipper\DuyetDonHang.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\KhuVuc\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
     <Content Include="Content\bootstrap.rtl.css.map" />

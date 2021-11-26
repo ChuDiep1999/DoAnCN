@@ -102,6 +102,7 @@
     <EntitySetMapping Name="Shippers">
       <EntityTypeMapping TypeName="Ship2hModel.Shipper">
         <MappingFragment StoreEntitySet="Shipper">
+          <ScalarProperty Name="DangDiGiao" ColumnName="DangDiGiao" />
           <ScalarProperty Name="MaShipper" ColumnName="MaShipper" />
           <ScalarProperty Name="HoTen" ColumnName="HoTen" />
           <ScalarProperty Name="SDT" ColumnName="SDT" />

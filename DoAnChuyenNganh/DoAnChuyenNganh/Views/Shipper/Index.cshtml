@@ -6,7 +6,12 @@
     WebGrid grid = new WebGrid(source: Model, rowsPerPage: 5);
 }
 
-<h2 class="title1">Các đơn hàng </h2>
+<h2 class="title1">Các đơn hàng chưa giao </h2>
+<br />
+<ul class="tabs">
+    <li role="presentation" class="tablinks active"><a href="@Url.Action("Index", "Shipper")">Chưa giao</a></li>
+    <li role="presentation" class="tablinks "><a href="@Url.Action("DaGiao", "Shipper")">Đã giao</a></li>
+</ul>
 <br />
 <br />
 @grid.GetHtml(

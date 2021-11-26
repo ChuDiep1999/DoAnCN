@@ -92,7 +92,7 @@ namespace DoAnChuyenNganh.Controllers
         }
         public ActionResult DanhSachShipperPartial()
         {
-            var listShipper = db.Shippers;
+            var listShipper = db.Shippers.Where(n=>n.DangDiGiao==false);
             return PartialView(listShipper);
         }
         [HttpGet]

@@ -30,8 +30,8 @@ namespace DoAnChuyenNganh.Models
         public string DinhVi { get; set; }
         public string TenDangNhap { get; set; }
         public string MatKhau { get; set; }
-        public int SoDonHang { get; set; }
-        public bool DangLam { get; set; }
+        public Nullable<bool> DangDiGiao { get; set; }
+    
         public virtual CaLam CaLam { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DonDatHang> DonDatHangs { get; set; }

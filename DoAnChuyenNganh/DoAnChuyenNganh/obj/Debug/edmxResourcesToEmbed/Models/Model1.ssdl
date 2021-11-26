@@ -103,6 +103,7 @@
     <Property Name="DinhVi" Type="nvarchar(max)" />
     <Property Name="TenDangNhap" Type="nvarchar" MaxLength="50" />
     <Property Name="MatKhau" Type="nvarchar" MaxLength="50" />
+    <Property Name="DangDiGiao" Type="bit" />
   </EntityType>
   <EntityType Name="ThanhVien">
     <Key>

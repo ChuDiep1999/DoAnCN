@@ -187,6 +187,7 @@
     <Compile Include="Controllers\QuanLyKhuVucController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\QuanLyKhoController.cs" />
+    <Compile Include="Controllers\QuanLyThanhVienController.cs" />
     <Compile Include="Controllers\ShipperController.cs" />
     <Compile Include="Controllers\TaiKhoanController.cs" />
     <Compile Include="Global.asax.cs">
@@ -524,8 +525,12 @@
     <Content Include="Views\Layout\_ShipperLayout.cshtml" />
     <Content Include="Views\Shipper\Index.cshtml" />
     <Content Include="Views\Shipper\DuyetDonHang.cshtml" />
+    <Content Include="Views\Shipper\DaGiao.cshtml" />
+    <Content Include="Views\Shipper\ThongTinTaiKhoan.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Views\QuanLyThanhVien\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
     <Content Include="Content\bootstrap.rtl.css.map" />

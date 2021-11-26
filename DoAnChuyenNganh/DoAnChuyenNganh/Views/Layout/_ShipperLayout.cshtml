@@ -38,8 +38,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <header class="header fixed-top clearfix">
             <!--logo start-->
             <div class="brand">
-                <a href="index.html" class="logo">
-                    VISITORS
+                <a href="@Url.Action("Index","Shipper")" class="logo">
+                    Giao Hàng
                 </a>
                 <div class="sidebar-toggle-box">
                     <div class="fa fa-bars"></div>
@@ -238,8 +238,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu extended logout">
-                            <li><a href="#"><i class=" fa fa-suitcase"></i>Profile</a></li>
-                            <li><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
+                            <li><a href="@Url.Action("ThongTinTaiKhoan","Shipper")"><i class=" fa fa-suitcase"></i>Thông tin tài khoản</a></li>
+                            <li><a href="#"><i class="fa fa-cog"></i> Đổi mật khẩu</a></li>
                             <li><a href="@Url.Action("DangXuat","Shipper")"><i class="fa fa-key"></i>Đăng xuất</a></li>
                         </ul>
                     </li>
@@ -257,7 +257,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <div class="leftside-navigation">
                     <ul class="sidebar-menu" id="nav-accordion">
                         <li>
-                            <a class="active" href="index.html">
+                            <a class="active" href="@Url.Action("Index","Shipper")">
                                 <i class="fa fa-dashboard"></i>
                                 <span>Dashboard</span>
                             </a>

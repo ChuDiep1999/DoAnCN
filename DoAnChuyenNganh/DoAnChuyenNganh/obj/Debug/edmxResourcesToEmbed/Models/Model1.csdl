@@ -126,6 +126,7 @@
     <NavigationProperty Name="DonDatHangs" Relationship="Self.FK_DonDatHang_Shipper" FromRole="Shipper" ToRole="DonDatHang" />
     <NavigationProperty Name="Kho" Relationship="Self.FK_Shipper_Kho" FromRole="Shipper" ToRole="Kho" />
     <NavigationProperty Name="LoaiThanhVien" Relationship="Self.FK_Shipper_LoaiThanhVien" FromRole="Shipper" ToRole="LoaiThanhVien" />
+    <Property Name="DangDiGiao" Type="Boolean" />
   </EntityType>
   <EntityType Name="ThanhVien">
     <Key>

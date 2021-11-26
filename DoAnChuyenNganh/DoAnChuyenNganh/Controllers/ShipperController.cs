@@ -34,7 +34,7 @@ namespace DoAnChuyenNganh.Controllers
                 return RedirectToAction("Index", "Shipper");
 
             }
-            ViewBag.ThongBaoDangNhap = "Thông tin đăng nhập không chính xác";
+            ViewBag.ThongBaoDangNhapShipper = "Thông tin đăng nhập không chính xác";
             return View();
         }
         public ActionResult Index()
@@ -43,7 +43,21 @@ namespace DoAnChuyenNganh.Controllers
             if (Session["TaiKhoanShipper"] != null)
             {
                 int id = (int)Session["IdShipper"];
-                var listDSDHCG = db.DonDatHangs.Where(n=>n.MaShipper==id).OrderBy(n => n.ThoiGianDat);
+                var listDSDHCG = db.DonDatHangs.Where(n=>n.MaShipper==id&&n.TinhTrangGiaoHang==false).OrderBy(n => n.ThoiGianDat);
+                return View(listDSDHCG);
+            }
+            else
+            {
+                return RedirectToAction("DangNhap", "Shipper");
+            }
+        }
+        public ActionResult DaGiao()
+        {
+
+            if (Session["TaiKhoanShipper"] != null)
+            {
+                int id = (int)Session["IdShipper"];
+                var listDSDHCG = db.DonDatHangs.Where(n => n.MaShipper == id && n.TinhTrangGiaoHang == true).OrderBy(n => n.ThoiGianDat);
                 return View(listDSDHCG);
             }
             else
@@ -92,6 +106,39 @@ namespace DoAnChuyenNganh.Controllers
         {
             Session.Clear();//remove session
             return RedirectToAction("DangNhap");
+        }
+        public ActionResult ThongTinTaiKhoan()
+        {
+            if (Session["TaiKhoanShipper"] != null)
+            {
+                int id = (int)Session["IdShipper"];
+                Shipper tv = db.Shippers.SingleOrDefault(n => n.MaShipper == id);
+                return View(tv);
+            }
+            else
+            {
+                return RedirectToAction("DangNhap", "Shipper");
+            }
+        }
+        [HttpPost]
+        public ActionResult ThongTinTaiKhoan(Shipper tv)
+        {
+            try
+            {
+
+                Shipper tvUpdate = db.Shippers.Single(n => n.MaShipper == tv.MaShipper);
+                tvUpdate.HoTen = tv.HoTen;
+                tvUpdate.Email = tv.Email;
+                tvUpdate.SDT = tv.SDT;
+                tvUpdate.DangDiGiao = tv.DangDiGiao;
+                db.SaveChanges();
+                Session["HoTenShipper"] = tv.HoTen;
+                return RedirectToAction("Index", "Shipper");
+            }
+            catch
+            {
+                return View(tv);
+            }
         }
     }
 }

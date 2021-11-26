@@ -15,6 +15,8 @@ namespace DoAnChuyenNganh.Controllers
         {
             if (Session["TaiKhoan"] != null)
             {
+                ViewBag.SoNguoiTruyCap = HttpContext.Application["SoNguoiTruyCap"].ToString(); //lay so luong nguoi truy cap
+                ViewBag.SoLuongNguoiDangOnline = HttpContext.Application["SoNguoiDangOnline"].ToString(); //lay so luong nguoi truy cap
                 return View();
             }
             else
@@ -27,7 +29,7 @@ namespace DoAnChuyenNganh.Controllers
         {
             if (Session["TaiKhoan"] != null)
             {
-                var listSP = db.Shippers.Where(n=>n.DangLam==true);
+                var listSP = db.Shippers.Where(n=>n.DangDiGiao==true);
                 return View(listSP);
             }
             else

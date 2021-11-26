@@ -1,0 +1,107 @@
+﻿@using DoAnChuyenNganh.Models;
+@model IEnumerable<DonDatHang>
+    @{
+        ViewBag.Title = "ChuaGiao";
+        Layout = "~/Views/Layout/_ShipperLayout.cshtml";
+        WebGrid grid = new WebGrid(source: Model, rowsPerPage: 5);
+    }
+
+    <h2 class="title1">Các đơn hàng đã giao </h2>
+    <br />
+    <ul class="tabs">
+        <li role="presentation" class="tablinks "><a href="@Url.Action("Index", "Shipper")">Chưa giao</a></li>
+        <li role="presentation" class="tablinks active"><a href="@Url.Action("DaGiao", "Shipper")">Đã giao</a></li>
+    </ul>
+    <br />
+    <br />
+    @grid.GetHtml(
+           tableStyle: "divTable",
+           headerStyle: "gridHead",
+           footerStyle: "gridFooter",
+           rowStyle: "gridRow",
+           alternatingRowStyle: "gridAltRow",
+            columns: grid.Columns(
+                   grid.Column("MaShipper", header: "Tên Shipper", format: p => p.MaShipper != null ? p.Shipper.HoTen : ""),
+                   grid.Column("ThoiGianDat", header: "Ngày đặt"),
+                   grid.Column("TinhTrangGiaoHang", header: "Tình trạng giao hàng"),
+                   grid.Column("DaThanhToan", "Đã thanh toán"),
+                   grid.Column("DinhViKhachHang", "Định vị khách hàng"),
+                   grid.Column(format: p => Html.ActionLink("Duyệt đơn hàng", "DuyetDonHang", new { id = p.MaDonDatHang
+        }, new { @target = "banml" }))
+                   ))
+    <style>
+        .divTable {
+            border: 1px solid #999999;
+            width: 100%;
+        }
+
+            .divTable td {
+                border: 1px solid #999999;
+            }
+
+        .gridHead {
+            background-color: Green;
+        }
+
+            .gridHead > th > a {
+                color: #fff;
+            }
+
+        .gridFooter {
+            font-weight: bold;
+        }
+        /*.gridRow{
+            color: #fff;
+            background-color: blueviolet;
+        }
+        .gridAltRow{
+            color: #fff;
+            background-color: darkorange;
+        }*/
+    </style>
+    <style>
+        .FooterAdmin {
+            display: none;
+        }
+
+        .tabs {
+            display: flex;
+        }
+
+        .tablinks {
+            border: none;
+            outline: none;
+            cursor: pointer;
+            width: 100%;
+            padding: 1rem;
+            font-size: 13px;
+            text-transform: uppercase;
+            font-weight: 600;
+            transition: 0.2s ease;
+        }
+
+            .tablinks:hover {
+                background: aqua;
+                color: #fff;
+            }
+            /* Tab active */
+            .tablinks.active {
+                background: aqua;
+                color: #fff;
+            }
+
+        /* tab content */
+        .tabcontent {
+            display: none;
+        }
+            /* Text*/
+            .tabcontent p {
+                color: #333;
+                font-size: 16px;
+            }
+            /* tab content active */
+            .tabcontent.active {
+                display: block;
+            }
+    </style>
+

@@ -37,6 +37,8 @@
     <Property Name="DaThanhToan" Type="bit" />
     <Property Name="MaShipper" Type="int" />
     <Property Name="DinhViKhachHang" Type="nvarchar(max)" />
+    <Property Name="ThoiGianGiao" Type="float" />
+    <Property Name="MaKho" Type="int" />
   </EntityType>
   <EntityType Name="Kho">
     <Key>
@@ -46,6 +48,7 @@
     <Property Name="TenKho" Type="nvarchar(max)" />
     <Property Name="DiaChi" Type="nvarchar(max)" />
     <Property Name="MaKhuVuc" Type="int" />
+    <Property Name="DinhViKho" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="KhuVuc">
     <Key>
@@ -165,6 +168,18 @@
       </Principal>
       <Dependent Role="ChiTietMatHang">
         <PropertyRef Name="MaMatHang" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DonDatHang_Kho">
+    <End Role="Kho" Type="Self.Kho" Multiplicity="0..1" />
+    <End Role="DonDatHang" Type="Self.DonDatHang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kho">
+        <PropertyRef Name="MaKho" />
+      </Principal>
+      <Dependent Role="DonDatHang">
+        <PropertyRef Name="MaKho" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -292,6 +307,10 @@
     <AssociationSet Name="FK_ChiTietMatHang_MatHang" Association="Self.FK_ChiTietMatHang_MatHang">
       <End Role="MatHang" EntitySet="MatHang" />
       <End Role="ChiTietMatHang" EntitySet="ChiTietMatHang" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DonDatHang_Kho" Association="Self.FK_DonDatHang_Kho">
+      <End Role="Kho" EntitySet="Kho" />
+      <End Role="DonDatHang" EntitySet="DonDatHang" />
     </AssociationSet>
     <AssociationSet Name="FK_DonDatHang_Shipper" Association="Self.FK_DonDatHang_Shipper">
       <End Role="Shipper" EntitySet="Shipper" />

@@ -23,11 +23,14 @@
        rowStyle: "gridRow",
        alternatingRowStyle: "gridAltRow",
         columns: grid.Columns(
+               grid.Column("MaDonDatHang", header: "Mã đơn"),
                grid.Column("MaShipper", header: "Tên Shipper", format: p => p.MaShipper != null ? p.Shipper.HoTen : ""),
+               grid.Column("MaKho", header: "Thuộc Kho", format: p => p.MaKho != null ? p.Kho.TenKho : ""),
                grid.Column("ThoiGianDat", header: "Ngày đặt"),
                grid.Column("TinhTrangGiaoHang", header: "Tình trạng giao hàng"),
                grid.Column("DaThanhToan", "Đã thanh toán"),
                grid.Column("DinhViKhachHang", "Định vị khách hàng"),
+               grid.Column("ThoiGianGiao", header: "Thời gian dự kiến giao (phút)"),
                grid.Column(format: p => Html.ActionLink("Duyệt đơn hàng", "DuyetDonHang", new { id = p.MaDonDatHang }, new { @target = "banml" }))
                ))
 <style>

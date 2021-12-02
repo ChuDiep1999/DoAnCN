@@ -34,6 +34,8 @@
     <EntitySetMapping Name="DonDatHangs">
       <EntityTypeMapping TypeName="Ship2hModel.DonDatHang">
         <MappingFragment StoreEntitySet="DonDatHang">
+          <ScalarProperty Name="MaKho" ColumnName="MaKho" />
+          <ScalarProperty Name="ThoiGianGiao" ColumnName="ThoiGianGiao" />
           <ScalarProperty Name="MaDonDatHang" ColumnName="MaDonDatHang" />
           <ScalarProperty Name="ThoiGianDat" ColumnName="ThoiGianDat" />
           <ScalarProperty Name="TinhTrangGiaoHang" ColumnName="TinhTrangGiaoHang" />
@@ -46,6 +48,7 @@
     <EntitySetMapping Name="Khoes">
       <EntityTypeMapping TypeName="Ship2hModel.Kho">
         <MappingFragment StoreEntitySet="Kho">
+          <ScalarProperty Name="DinhViKho" ColumnName="DinhViKho" />
           <ScalarProperty Name="MaKho" ColumnName="MaKho" />
           <ScalarProperty Name="TenKho" ColumnName="TenKho" />
           <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />

@@ -29,6 +29,7 @@
         <AssociationConnector Association="Ship2hModel.FK_Shipper_LoaiThanhVien" ManuallyRouted="false" />
         <AssociationConnector Association="Ship2hModel.FK_ThanhVien_LoaiThanhVien" ManuallyRouted="false" />
         <AssociationConnector Association="Ship2hModel.FK_LoaiThanhVien_Quyen_Quyen" ManuallyRouted="false" />
+        <AssociationConnector Association="Ship2hModel.FK_DonDatHang_Kho" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

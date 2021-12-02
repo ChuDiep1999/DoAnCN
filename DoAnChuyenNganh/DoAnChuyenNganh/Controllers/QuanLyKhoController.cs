@@ -140,6 +140,99 @@ namespace DoAnChuyenNganh.Controllers
                 return RedirectToAction("DangNhap", "Home");
             }
         }
+        public ActionResult XemShipper(int? id)
+        {
+            if (Session["TaiKhoan"] != null)
+            {
+
+                return View(db.Shippers.Where(n => n.MaKho == id));
+            }
+            else
+            {
+                return RedirectToAction("DangNhap", "Home");
+            }
+        }
+        public ActionResult XemDonHang(int? id)
+        {
+            if (Session["TaiKhoan"] != null)
+            {
+                ViewBag.TongThoiGianGiao = db.DonDatHangs.Where(n => n.MaShipper == id&& n.TinhTrangGiaoHang==false).Sum(n => n.ThoiGianGiao);
+                return View(db.DonDatHangs.Where(n => n.MaShipper == id && n.TinhTrangGiaoHang == false));
+            }
+            else
+            {
+                return RedirectToAction("DangNhap", "Home");
+            }
+        }
+        public ActionResult DonHangChuaCoShipperKho(int ?id)
+        {
+            if (Session["TaiKhoan"] != null)
+            {
+                ViewBag.idKho = id;
+                return View(db.DonDatHangs.Where(n => n.MaShipper == null && n.MaKho==id && n.ThoiGianGiao != null));
+            }
+            else
+            {
+                return RedirectToAction("DangNhap", "Home");
+            }
+        }
+        public ActionResult DonHangChuaTinhThoiGian (int? id)
+        {
+            if (Session["TaiKhoan"] != null)
+            {
+                return View(db.DonDatHangs.Where(n => n.MaShipper == null && n.MaKho == id && n.ThoiGianGiao==null));
+            }
+            else
+            {
+                return RedirectToAction("DangNhap", "Home");
+            }
+        }
+        public ActionResult DonHangDaGiao(int ?id)
+        {
+            if (Session["TaiKhoan"] != null)
+            {
+                return View(db.DonDatHangs.Where(n => n.MaShipper == id && n.TinhTrangGiaoHang == true));
+            }
+            else
+            {
+                return RedirectToAction("DangNhap", "Home");
+            }
+        }
+        [HttpGet]
+        public ActionResult TinhThoiGian (int? id)
+        {
+
+            if (Session["TaiKhoan"] != null)
+            {
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                DonDatHang model = db.DonDatHangs.SingleOrDefault(n => n.MaDonDatHang == id);
+                if (model == null)
+                {
+                    return HttpNotFound();
+                }
+                var listChiTietDH = db.ChiTietDonDatHangs.Where(n => n.MaDonDatHang == id);
+                ViewBag.ListChiTietDH = listChiTietDH;
+                return View(model);
+            }
+            else
+            {
+                return RedirectToAction("DangNhap", "Home");
+            }
+        }
+        [HttpPost]
+        public ActionResult TinhThoiGian(DonDatHang ddh)
+        {
+            DonDatHang ddhUpdate = db.DonDatHangs.Single(n => n.MaDonDatHang == ddh.MaDonDatHang);
+            ddhUpdate.ThoiGianGiao = ddh.ThoiGianGiao;
+            db.SaveChanges();
+            var listChiTietDH = db.ChiTietDonDatHangs.Where(n => n.MaDonDatHang == ddh.MaDonDatHang);
+            ViewBag.ListChiTietDH = listChiTietDH;
+            ViewBag.ThongBaoDuyetThoiGian = "Đã lưu thành công";
+            return View(ddhUpdate);
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)

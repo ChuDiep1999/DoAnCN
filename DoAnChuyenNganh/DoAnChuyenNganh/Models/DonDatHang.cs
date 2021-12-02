@@ -26,9 +26,12 @@ namespace DoAnChuyenNganh.Models
         public Nullable<bool> DaThanhToan { get; set; }
         public Nullable<int> MaShipper { get; set; }
         public string DinhViKhachHang { get; set; }
+        public Nullable<double> ThoiGianGiao { get; set; }
+        public Nullable<int> MaKho { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietDonDatHang> ChiTietDonDatHangs { get; set; }
         public virtual Shipper Shipper { get; set; }
+        public virtual Kho Kho { get; set; }
     }
 }

@@ -1,0 +1,107 @@
+﻿@using DoAnChuyenNganh.Models;
+@model IEnumerable<DonDatHang>
+@{
+    ViewBag.Title = "DonHangChuaTinhThoiGian";
+    Layout = "~/Views/Layout/HomeLayout.cshtml";
+    WebGrid grid = new WebGrid(source: Model, rowsPerPage: 5);
+}
+
+<h2 class="title1">Quản lý đơn kho (Đơn hàng chưa tính thời gian)</h2>
+<br />
+<div>
+    @Html.ActionLink("Quay lại danh sách", "Index")
+</div>
+<br />
+@grid.GetHtml(
+       tableStyle: "divTable",
+       headerStyle: "gridHead",
+       footerStyle: "gridFooter",
+       rowStyle: "gridRow",
+       alternatingRowStyle: "gridAltRow",
+        columns: grid.Columns(
+               grid.Column("MaDonDatHang", header: "Mã đơn"),
+              
+               grid.Column("MaKho", header: "Thuộc Kho", format: p => p.MaKho != null ? p.Kho.TenKho : ""),
+               grid.Column("ThoiGianDat", header: "Ngày đặt"),
+               grid.Column("DinhViKhachHang", "Định vị khách hàng"),
+               grid.Column("ThoiGianGiao", header: "Thời gian dự kiến giao (phút)"),
+               grid.Column(format: p => Html.ActionLink("Tính thời gian", "TinhThoiGian", new { id = p.MaDonDatHang }, new { @target = "banml" }))
+
+               ))
+<style>
+    .divTable {
+        border: 1px solid #999999;
+        width: 100%;
+    }
+
+        .divTable td {
+            border: 1px solid #999999;
+        }
+
+    .gridHead {
+        background-color: Green;
+    }
+
+        .gridHead > th > a {
+            color: #fff;
+        }
+
+    .gridFooter {
+        font-weight: bold;
+    }
+    /*.gridRow{
+            color: #fff;
+            background-color: blueviolet;
+        }
+        .gridAltRow{
+            color: #fff;
+            background-color: darkorange;
+        }*/
+</style>
+<style>
+    .FooterAdmin {
+        display: none;
+    }
+
+    .tabs {
+        display: flex;
+    }
+
+    .tablinks {
+        border: none;
+        outline: none;
+        cursor: pointer;
+        width: 100%;
+        padding: 1rem;
+        font-size: 13px;
+        text-transform: uppercase;
+        font-weight: 600;
+        transition: 0.2s ease;
+    }
+
+        .tablinks:hover {
+            background: aqua;
+            color: #fff;
+        }
+        /* Tab active */
+        .tablinks.active {
+            background: aqua;
+            color: #fff;
+        }
+
+    /* tab content */
+    .tabcontent {
+        display: none;
+    }
+        /* Text*/
+        .tabcontent p {
+            color: #333;
+            font-size: 16px;
+        }
+        /* tab content active */
+        .tabcontent.active {
+            display: block;
+        }
+</style>
+
+

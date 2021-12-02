@@ -42,6 +42,8 @@
           <Property Name="DaThanhToan" Type="bit" />
           <Property Name="MaShipper" Type="int" />
           <Property Name="DinhViKhachHang" Type="nvarchar(max)" />
+          <Property Name="ThoiGianGiao" Type="float" />
+          <Property Name="MaKho" Type="int" />
         </EntityType>
         <EntityType Name="Kho">
           <Key>
@@ -51,6 +53,7 @@
           <Property Name="TenKho" Type="nvarchar(max)" />
           <Property Name="DiaChi" Type="nvarchar(max)" />
           <Property Name="MaKhuVuc" Type="int" />
+          <Property Name="DinhViKho" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="KhuVuc">
           <Key>
@@ -170,6 +173,18 @@
             </Principal>
             <Dependent Role="ChiTietMatHang">
               <PropertyRef Name="MaMatHang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DonDatHang_Kho">
+          <End Role="Kho" Type="Self.Kho" Multiplicity="0..1" />
+          <End Role="DonDatHang" Type="Self.DonDatHang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kho">
+              <PropertyRef Name="MaKho" />
+            </Principal>
+            <Dependent Role="DonDatHang">
+              <PropertyRef Name="MaKho" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -298,6 +313,10 @@
             <End Role="MatHang" EntitySet="MatHang" />
             <End Role="ChiTietMatHang" EntitySet="ChiTietMatHang" />
           </AssociationSet>
+          <AssociationSet Name="FK_DonDatHang_Kho" Association="Self.FK_DonDatHang_Kho">
+            <End Role="Kho" EntitySet="Kho" />
+            <End Role="DonDatHang" EntitySet="DonDatHang" />
+          </AssociationSet>
           <AssociationSet Name="FK_DonDatHang_Shipper" Association="Self.FK_DonDatHang_Shipper">
             <End Role="Shipper" EntitySet="Shipper" />
             <End Role="DonDatHang" EntitySet="DonDatHang" />
@@ -379,6 +398,9 @@
           <Property Name="DinhViKhachHang" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="ChiTietDonDatHangs" Relationship="Self.FK_ChiTietDonDatHang_DonDatHang" FromRole="DonDatHang" ToRole="ChiTietDonDatHang" />
           <NavigationProperty Name="Shipper" Relationship="Self.FK_DonDatHang_Shipper" FromRole="DonDatHang" ToRole="Shipper" />
+          <Property Name="ThoiGianGiao" Type="Double" />
+          <Property Name="MaKho" Type="Int32" />
+          <NavigationProperty Name="Kho" Relationship="Ship2hModel.FK_DonDatHang_Kho" FromRole="DonDatHang" ToRole="Kho" />
         </EntityType>
         <EntityType Name="Kho">
           <Key>
@@ -391,6 +413,8 @@
           <NavigationProperty Name="ChiTietMatHangs" Relationship="Self.FK_ChiTietMatHang_Kho" FromRole="Kho" ToRole="ChiTietMatHang" />
           <NavigationProperty Name="KhuVuc" Relationship="Self.FK_Kho_KhuVuc" FromRole="Kho" ToRole="KhuVuc" />
           <NavigationProperty Name="Shippers" Relationship="Self.FK_Shipper_Kho" FromRole="Kho" ToRole="Shipper" />
+          <NavigationProperty Name="DonDatHangs" Relationship="Ship2hModel.FK_DonDatHang_Kho" FromRole="Kho" ToRole="DonDatHang" />
+          <Property Name="DinhViKho" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="KhuVuc">
           <Key>
@@ -684,7 +708,23 @@
             <End Role="Quyen" EntitySet="Quyens" />
             <End Role="LoaiThanhVien_Quyen" EntitySet="LoaiThanhVien_Quyen" />
           </AssociationSet>
+          <AssociationSet Name="FK_DonDatHang_Kho" Association="Ship2hModel.FK_DonDatHang_Kho">
+            <End Role="Kho" EntitySet="Khoes" />
+            <End Role="DonDatHang" EntitySet="DonDatHangs" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="FK_DonDatHang_Kho">
+          <End Type="Ship2hModel.Kho" Role="Kho" Multiplicity="0..1" />
+          <End Type="Ship2hModel.DonDatHang" Role="DonDatHang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kho">
+              <PropertyRef Name="MaKho" />
+            </Principal>
+            <Dependent Role="DonDatHang">
+              <PropertyRef Name="MaKho" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -724,6 +764,8 @@
           <EntitySetMapping Name="DonDatHangs">
             <EntityTypeMapping TypeName="Ship2hModel.DonDatHang">
               <MappingFragment StoreEntitySet="DonDatHang">
+                <ScalarProperty Name="MaKho" ColumnName="MaKho" />
+                <ScalarProperty Name="ThoiGianGiao" ColumnName="ThoiGianGiao" />
                 <ScalarProperty Name="MaDonDatHang" ColumnName="MaDonDatHang" />
                 <ScalarProperty Name="ThoiGianDat" ColumnName="ThoiGianDat" />
                 <ScalarProperty Name="TinhTrangGiaoHang" ColumnName="TinhTrangGiaoHang" />
@@ -736,6 +778,7 @@
           <EntitySetMapping Name="Khoes">
             <EntityTypeMapping TypeName="Ship2hModel.Kho">
               <MappingFragment StoreEntitySet="Kho">
+                <ScalarProperty Name="DinhViKho" ColumnName="DinhViKho" />
                 <ScalarProperty Name="MaKho" ColumnName="MaKho" />
                 <ScalarProperty Name="TenKho" ColumnName="TenKho" />
                 <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />

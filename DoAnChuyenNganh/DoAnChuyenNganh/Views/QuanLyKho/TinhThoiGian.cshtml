@@ -1,0 +1,166 @@
+﻿@using DoAnChuyenNganh.Models
+@model DonDatHang
+@{
+    ViewBag.Title = "TinhThoiGian";
+    Layout = "~/Views/Layout/HomeLayout.cshtml";
+}
+
+
+<h2>Thông tin đơn hàng của kho <font color="#f65e84">@Model.Kho.TenKho</font> ở vị trí <font color="#f65e84">@Model.Kho.DinhViKho</font> </h2>
+<h3 class="control-label" style="color: #3c763d">@ViewBag.ThongBaoDuyetThoiGian</h3>
+@using (Html.BeginForm())
+{
+<div class="ChiTietDonHang table">
+    @{ IEnumerable<ChiTietDonDatHang> listChiTietDH = (IEnumerable<ChiTietDonDatHang>)ViewBag.ListChiTietDH;}
+    <table class="table" id="table">
+        <tr>
+            <td colspan="4">
+                <table style="width:100%;">
+                    <tr>
+                        <td>Mã đơn hàng: <b style="color:red;">@Model.MaDonDatHang @Html.Hidden("MaDonDatHang", @Model.MaDonDatHang)</b></td>
+                        <td>Định vị đơn hàng: <b style="color: red;">@Model.DinhViKhachHang</b></td>
+                        <td>Ngày đặt: @Model.ThoiGianDat.Value.ToString("dd-MM-yyyy HH:mm:ss")</td>
+                        <td>Tình trạng thanh toán: <b style="color: red;">@Model.DaThanhToan</b></td>
+                        <td>Tình trạng giao hàng: <b style="color: red;">@Model.TinhTrangGiaoHang</b></td>
+                    </tr>
+
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>Thời gian đặt: @Html.EditorFor(model => model.ThoiGianGiao, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nhập thời gian giao" } })</td>
+        </tr>
+        <tr>
+            <td><b>Sản phẩm</b></td>
+            <td><b>hình ảnh</b></td>
+            <td><b>Số lượng đặt</b></td>
+            <td><b>Đơn giá đặt</b></td>
+        </tr>
+        @foreach (var item in listChiTietDH)
+        {
+            <tr>
+                <td>@item.MatHang.TenMatHang</td>
+                <td><img width="150" height="150" src="@Url.Content("~/Content/Images/"+item.MatHang.HinhAnh)" /></td>
+                <td>@item.SoLuong</td>
+                <td>@item.DonGia</td>
+            </tr>
+        }
+        <tr>
+            <td align="right" colspan="4">Tổng số lượng: @Model.ChiTietDonDatHangs.Sum(n => n.SoLuong) sản phẩm</td>
+        </tr>
+        <tr>
+            <td align="right" colspan="4">Tổng tiền: @Model.ChiTietDonDatHangs.Sum(n => n.MatHang.DonGia).Value.ToString("#,##") đồng</td>
+        </tr>
+    </table>
+    <div class="row table">
+        <div class="col-md-12">
+            <div>
+                <div>
+                    <br />
+                    Di chuyển từ : <input id="travelfrom" type="text" name="name" class="form-control" value=@Model.Kho.DinhViKho />
+                    Tới : <input class="form-control" id="travelto" type="text" name="name" value=@Model.DinhViKhachHang />
+                    <br />
+                    <input class="btn btn-success" type="button" value="Tính thời gian" onclick="GetRoute()" />
+                    <input type="submit" class="btn btn-success" value="Lưu đơn hàng" />
+                </div>
+                <br />
+                <div>
+                    <div id="dvDistance">
+                    </div>
+                </div>
+
+            </div>
+
+            <div id="dvMap" style="min-height:500px"></div>
+
+        </div>
+    </div>
+    <br />
+    
+</div>
+}
+
+
+<!--ENSURE YOU CHANGE TO YOUR OWN API KEY HERE !!! -->
+<script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyBsZrS5LkAXAqzgVYMJQQMYOoWgYCHHZTU" type="text/javascript"></script>
+
+<!-- code for example 1 -->
+<script>
+    var source, destination;
+    var directionsDisplay;
+    var directionsService = new google.maps.DirectionsService();
+    // initialise the location of the map on Chichester in England (ref lat and lng)
+    var map = new google.maps.Map(document.getElementById('dvMap'), {
+        center: { lat: 10.801509, lng: 106.714009 },
+        zoom: 13,
+        mapTypeId: 'roadmap'
+    });
+
+    google.maps.event.addDomListener(window, 'load', function () {
+        new google.maps.places.SearchBox(document.getElementById('travelfrom'));
+        new google.maps.places.SearchBox(document.getElementById('travelto'));
+        directionsDisplay = new google.maps.DirectionsRenderer({ 'draggable': true });
+    });
+
+    function GetRoute() {
+
+        directionsDisplay.setMap(map);
+
+        source = document.getElementById("travelfrom").value;
+        destination = document.getElementById("travelto").value;
+
+        var request = {
+            origin: source,
+            destination: destination,
+            travelMode: google.maps.TravelMode.DRIVING
+        };
+
+        directionsService.route(request, function (response, status) {
+            if (status == google.maps.DirectionsStatus.OK) {
+                directionsDisplay.setDirections(response);
+            }
+        });
+
+        //*********DISTANCE AND DURATION**********************//
+        var service = new google.maps.DistanceMatrixService();
+        service.getDistanceMatrix({
+            origins: [source],
+            destinations: [destination],
+            travelMode: google.maps.TravelMode.DRIVING,
+            unitSystem: google.maps.UnitSystem.METRIC,
+            avoidHighways: false,
+            avoidTolls: false
+        }, function (response, status) {
+
+            if (status == google.maps.DistanceMatrixStatus.OK && response.rows[0].elements[0].status != "ZERO_RESULTS") {
+                var distance = response.rows[0].elements[0].distance.text;
+                var duration = response.rows[0].elements[0].duration.value;
+                var dvDistance = document.getElementById("dvDistance");
+                duration = parseFloat(duration / 60).toFixed(2);
+                dvDistance.innerHTML = "";
+                dvDistance.innerHTML += "Khoảng cách: " + distance + "<br />";
+                dvDistance.innerHTML += "Thời gian:" + duration + " phút ";
+
+            } else {
+                alert("Unable to find the distance via road.");
+            }
+        });
+    }
+
+</script>
+<script>
+    $("#btnInDonHang").click(function () {
+        var content = "<table>" + $("#table").html();
+        InDonHang(content);
+    });
+    function InDonHang(content) {
+        var printWindow = window.open('', '', 'height=400,width=800');
+        printWindow.document.write('<html><head><title>DIV Contents</title>');
+        printWindow.document.write('<head><body>');
+        printWindow.document.write(content);
+        printWindow.document.write('</body><html>');
+        printWindow.document.close();
+        printWindow.print();
+    }
+</script>
+

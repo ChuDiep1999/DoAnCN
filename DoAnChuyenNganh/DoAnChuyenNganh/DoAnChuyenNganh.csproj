@@ -527,6 +527,12 @@
     <Content Include="Views\Shipper\DuyetDonHang.cshtml" />
     <Content Include="Views\Shipper\DaGiao.cshtml" />
     <Content Include="Views\Shipper\ThongTinTaiKhoan.cshtml" />
+    <Content Include="Views\QuanLyKho\XemShipper.cshtml" />
+    <Content Include="Views\QuanLyKho\XemDonHang.cshtml" />
+    <Content Include="Views\QuanLyKho\DonHangChuaCoShipperKho.cshtml" />
+    <Content Include="Views\QuanLyKho\DonHangDaGiao.cshtml" />
+    <Content Include="Views\QuanLyKho\DonHangChuaTinhThoiGian.cshtml" />
+    <Content Include="Views\QuanLyKho\TinhThoiGian.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\QuanLyThanhVien\" />

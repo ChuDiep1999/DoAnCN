@@ -22,9 +22,9 @@
             grid.Column("TenKho", "Tên Kho"),
             grid.Column("MaKhuVuc", header: "Thuộc Khu Vực", format: p => p.MaKhuVuc != null ? p.KhuVuc.TenKhuVuc : ""),
             grid.Column("DinhViKho", "Định vị kho"),
-            grid.Column(format: p => Html.ActionLink("Xem danh sách shipper của kho", "XemShipper", new { id = p.MaKho })),
             grid.Column(format: p => Html.ActionLink("Đơn hàng chưa tính thời gian", "DonHangChuaTinhThoiGian", new { id = p.MaKho })),
             grid.Column(format: p => Html.ActionLink("Đơn hàng chưa có shipper", "DonHangChuaCoShipperKho", new { id = p.MaKho })),
+            grid.Column(format: p => Html.ActionLink("Xem danh sách shipper của kho", "XemShipper", new { id = p.MaKho })),
             grid.Column(format: p => Html.ActionLink("Xem các mặt hàng trong kho", "XemSoLuongMatHang", new { id = p.MaKho })),
             grid.Column(format: p => Html.ActionLink("Chỉnh sửa", "ChinhSua", new { id = p.MaKho })),
             grid.Column(format: p => Html.ActionLink("Xóa", "Xoa", new { id = p.MaKho }))

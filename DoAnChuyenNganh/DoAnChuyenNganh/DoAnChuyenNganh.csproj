@@ -517,8 +517,6 @@
     <Content Include="Views\QuanLyDonHang\ChuaThanhToanChuaGiao.cshtml" />
     <Content Include="Views\QuanLyDonHang\DaThanhToanDaGiao.cshtml" />
     <Content Include="Views\QuanLyDonHang\DonHangChuaCoShipper.cshtml" />
-    <Content Include="Views\QuanLyDonHang\ChonShipper.cshtml" />
-    <Content Include="Views\QuanLyDonHang\DanhSachShipperPartial.cshtml" />
     <Content Include="Views\Home\Index2.cshtml" />
     <Content Include="Views\QuanLyDonHang\DuyetDonHang.cshtml" />
     <Content Include="Views\Shipper\DangNhap.cshtml" />
@@ -528,15 +526,17 @@
     <Content Include="Views\Shipper\DaGiao.cshtml" />
     <Content Include="Views\Shipper\ThongTinTaiKhoan.cshtml" />
     <Content Include="Views\QuanLyKho\XemShipper.cshtml" />
-    <Content Include="Views\QuanLyKho\XemDonHang.cshtml" />
+    <Content Include="Views\QuanLyKho\XemDonHangChuaGiao.cshtml" />
     <Content Include="Views\QuanLyKho\DonHangChuaCoShipperKho.cshtml" />
     <Content Include="Views\QuanLyKho\DonHangDaGiao.cshtml" />
     <Content Include="Views\QuanLyKho\DonHangChuaTinhThoiGian.cshtml" />
     <Content Include="Views\QuanLyKho\TinhThoiGian.cshtml" />
+    <Content Include="Views\QuanLyKho\GoShipper.cshtml" />
+    <Content Include="Views\QuanLyKho\ChonShipper.cshtml" />
+    <Content Include="Views\QuanLyThanhVien\Index.cshtml" />
+    <Content Include="Views\QuanLyThanhVien\ChinhSua.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\QuanLyThanhVien\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
     <Content Include="Content\bootstrap.rtl.css.map" />

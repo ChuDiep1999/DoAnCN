@@ -7,10 +7,9 @@
 }
 
 <h2 class="title1">Danh sách đơn đặt hàng</h2>
-br />
 <ul class="tabs">
-    <li role="presentation" class="tablinks "><a href="@Url.Action("XemDonHang", "QuanLyKho")">Đơn hàng chưa giao</a></li>
-    <li role="presentation" class="tablinks active"><a href="@Url.Action("DonHangDaGiao", "QuanLyKho")">Đơn hàng đã giao</a></li>
+    <li role="presentation" class="tablinks ">@Html.ActionLink("Xem đơn hàng chưa giao", "XemDonHangChuaGiao", new { id = ViewBag.idShipper })"</li>
+    <li role="presentation" class="tablinks active">@Html.ActionLink("Xem đơn hàng đã giao", "DonHangDaGiao", new { id = ViewBag.idShipper })</li>
 
 </ul>
 <br />

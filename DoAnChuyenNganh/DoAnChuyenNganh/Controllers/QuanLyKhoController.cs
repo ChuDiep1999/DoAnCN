@@ -19,9 +19,9 @@ namespace DoAnChuyenNganh.Controllers
             }
             else
             {
-                return RedirectToAction("DangNhap","Home");
+                return RedirectToAction("DangNhap", "Home");
             }
-            
+
         }
 
         public ActionResult ThemKho()
@@ -33,7 +33,7 @@ namespace DoAnChuyenNganh.Controllers
             }
             else
             {
-                return RedirectToAction("DangNhap","Home");
+                return RedirectToAction("DangNhap", "Home");
             }
         }
         [ValidateInput(false)]
@@ -104,6 +104,7 @@ namespace DoAnChuyenNganh.Controllers
         [HttpPost]
         public ActionResult Xoa(int id)
         {
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -113,9 +114,17 @@ namespace DoAnChuyenNganh.Controllers
             {
                 return HttpNotFound();
             }
-            db.Khoes.Remove(kho);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            try
+            {
+                db.Khoes.Remove(kho);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }catch
+            {
+                ViewBag.ThongBao = "Thông tin kho có dữ liệu liên quan đến shipper hoặc đơn hàng nên chưa thể xóa";
+                return View(kho);
+            }
+            
         }
         [HttpGet]
         public ActionResult XemSoLuongMatHang(int? id)
@@ -152,45 +161,58 @@ namespace DoAnChuyenNganh.Controllers
                 return RedirectToAction("DangNhap", "Home");
             }
         }
-        public ActionResult XemDonHang(int? id)
+        public ActionResult XemDonHangChuaGiao(int? id)
         {
             if (Session["TaiKhoan"] != null)
             {
-                ViewBag.TongThoiGianGiao = db.DonDatHangs.Where(n => n.MaShipper == id&& n.TinhTrangGiaoHang==false).Sum(n => n.ThoiGianGiao);
-                return View(db.DonDatHangs.Where(n => n.MaShipper == id && n.TinhTrangGiaoHang == false));
+                ViewBag.TongThoiGianGiao = db.DonDatHangs.Where(n => n.MaShipper == id && n.TinhTrangGiaoHang == false).Sum(n => n.ThoiGianGiao);
+                ViewBag.idShipper = id;
+                if (ViewBag.TongThoiGianGiao != null)
+                {
+                    float a = (float)ViewBag.TongThoiGianGiao;
+                    if (a > 90)
+                    {
+                        ViewBag.ThongBaoXemDonHang = "Thời gian đã vượt quá 90 phút xem xét giao cho shipper khác";
+                        return View(db.DonDatHangs.Where(n => n.MaShipper == id && n.TinhTrangGiaoHang == false && n.ThoiGianGiao != null));
+                    }
+                    ViewBag.ThongBaoXemDonHang1 = "Thời gian hợp lý để đi giao";
+                    return View(db.DonDatHangs.Where(n => n.MaShipper == id && n.TinhTrangGiaoHang == false && n.ThoiGianGiao != null));
+                }
+                return View(db.DonDatHangs.Where(n => n.MaShipper == id && n.TinhTrangGiaoHang == false && n.ThoiGianGiao != null));
             }
             else
             {
                 return RedirectToAction("DangNhap", "Home");
             }
         }
-        public ActionResult DonHangChuaCoShipperKho(int ?id)
+        public ActionResult DonHangChuaCoShipperKho(int? id)
         {
             if (Session["TaiKhoan"] != null)
             {
                 ViewBag.idKho = id;
-                return View(db.DonDatHangs.Where(n => n.MaShipper == null && n.MaKho==id && n.ThoiGianGiao != null));
+                return View(db.DonDatHangs.Where(n => n.MaShipper == null && n.MaKho == id && n.ThoiGianGiao != null));
             }
             else
             {
                 return RedirectToAction("DangNhap", "Home");
             }
         }
-        public ActionResult DonHangChuaTinhThoiGian (int? id)
+        public ActionResult DonHangChuaTinhThoiGian(int? id)
         {
             if (Session["TaiKhoan"] != null)
             {
-                return View(db.DonDatHangs.Where(n => n.MaShipper == null && n.MaKho == id && n.ThoiGianGiao==null));
+                return View(db.DonDatHangs.Where(n => n.MaShipper == null && n.MaKho == id && n.ThoiGianGiao == null));
             }
             else
             {
                 return RedirectToAction("DangNhap", "Home");
             }
         }
-        public ActionResult DonHangDaGiao(int ?id)
+        public ActionResult DonHangDaGiao(int? id)
         {
             if (Session["TaiKhoan"] != null)
             {
+                ViewBag.idShipper = id;
                 return View(db.DonDatHangs.Where(n => n.MaShipper == id && n.TinhTrangGiaoHang == true));
             }
             else
@@ -199,7 +221,7 @@ namespace DoAnChuyenNganh.Controllers
             }
         }
         [HttpGet]
-        public ActionResult TinhThoiGian (int? id)
+        public ActionResult TinhThoiGian(int? id)
         {
 
             if (Session["TaiKhoan"] != null)
@@ -232,6 +254,68 @@ namespace DoAnChuyenNganh.Controllers
             ViewBag.ListChiTietDH = listChiTietDH;
             ViewBag.ThongBaoDuyetThoiGian = "Đã lưu thành công";
             return View(ddhUpdate);
+        }
+        [HttpGet]
+        public ActionResult GoShipper(int? id)
+        {
+            if (Session["TaiKhoan"] != null)
+            {
+                if (id == null)
+                {
+                    Response.StatusCode = 404;
+                    return null;
+                }
+                DonDatHang ddh = db.DonDatHangs.Where(n=>n.ThoiGianDat!=null&&n.TinhTrangGiaoHang==false&&n.MaShipper!=null).SingleOrDefault(n => n.MaDonDatHang == id);
+                if (ddh == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(ddh);
+            }
+            else
+            {
+                return RedirectToAction("DangNhap", "Home");
+            }
+        } 
+        [HttpPost]
+        public ActionResult GoShipper(int id)
+        {   
+            DonDatHang ddhUpdate = db.DonDatHangs.Single(n => n.MaDonDatHang == id);
+            ddhUpdate.MaShipper = null;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+        public ActionResult ChonShipper(int? id)
+        {
+            if (Session["TaiKhoan"] != null)
+            {
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                DonDatHang model = db.DonDatHangs.SingleOrDefault(n => n.MaDonDatHang == id);
+                if (model == null)
+                {
+                    return HttpNotFound();
+                }
+                var listShipper = db.Shippers.Where(n => n.MaKho == model.MaKho&& n.DangDiGiao == false);
+                ViewBag.MaShipper = new SelectList(db.Shippers.Where(n=>n.MaKho==model.MaKho&&n.DangDiGiao==false).OrderBy(n => n.MaShipper), "MaShipper", "MaShipper", model.MaShipper);
+                ViewBag.listShipper = listShipper;
+                return View(model);
+            }
+            else
+            {
+                return RedirectToAction("DangNhap", "Home");
+            }
+        }
+        [HttpPost]
+        public ActionResult ChonShipper(DonDatHang ddh)
+        {
+            ViewBag.MaShipper = new SelectList(db.Shippers.Where(n => n.MaKho == ddh.MaKho && n.DangDiGiao == false).OrderBy(n => n.MaShipper), "MaShipper", "MaShipper", ddh.MaShipper);
+            DonDatHang tvUpdate = db.DonDatHangs.Single(n => n.MaDonDatHang == ddh.MaDonDatHang);
+            tvUpdate.MaShipper = ddh.MaShipper;
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
         protected override void Dispose(bool disposing)
         {

@@ -28,9 +28,7 @@
                grid.Column("MaKho", header: "Thuộc Kho", format: p => p.MaKho != null ? p.Kho.TenKho : ""),
                grid.Column("ThoiGianDat", header: "Ngày đặt"),
                grid.Column("DinhViKhachHang", "Định vị khách hàng"),
-               grid.Column("ThoiGianGiao", header: "Thời gian dự kiến giao (phút)"),
-               grid.Column(format: p => Html.ActionLink("Chọn Shipper", "ChonShipper", new { id = p.MaDonDatHang }, new { @target = "banml" }))
-               
+               grid.Column("ThoiGianGiao", header: "Thời gian dự kiến giao (phút)")            
                ))
 <style>
     .divTable {

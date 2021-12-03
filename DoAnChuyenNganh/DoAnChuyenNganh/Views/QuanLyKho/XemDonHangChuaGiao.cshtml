@@ -1,16 +1,19 @@
 ﻿@using DoAnChuyenNganh.Models;
 @model IEnumerable<DonDatHang>
 @{
-    ViewBag.Title = "XemDonHang";
+    ViewBag.Title = "XemDonHangChuaGiao";
     Layout = "~/Views/Layout/HomeLayout.cshtml";
     WebGrid grid = new WebGrid(source: Model, rowsPerPage: 10);
 }
 <h2 class="title1">Danh sách đơn đặt hàng</h2>
-<p>Tổng thời gian giao @ViewBag.TongThoiGianGiao</p>
+<h4 class="title" style="color:red">@ViewBag.ThongBaoXemDonHang</h4>
+<h4 class="title" style="color:green">@ViewBag.ThongBaoXemDonHang1</h4>
+<p>Tổng thời gian giao @ViewBag.TongThoiGianGiao phút</p>
+
 <br />
 <ul class="tabs">
-    <li role="presentation" class="tablinks active"><a href="@Url.Action("XemDonHang", "QuanLyKho")">Đơn hàng chưa giao</a></li>
-    <li role="presentation" class="tablinks"><a href="@Url.Action("DonHangDaGiao", "QuanLyKho")">Đơn hàng đã giao</a></li>
+    <li role="presentation" class="tablinks active">@Html.ActionLink("Xem đơn hàng chưa giao", "XemDonHangChuaGiao" ,new { id = ViewBag.idShipper})"</li>
+    <li role="presentation" class="tablinks">@Html.ActionLink("Xem đơn hàng đã giao","DonHangDaGiao", new { id = ViewBag.idShipper })</li>
     
 </ul>
 <br />
@@ -25,7 +28,6 @@
             grid.Column("MaDonDatHang", "Mã Đơn Đặt Hàng"),
             grid.Column("MaShipper", header: "Tên Shipper", format: p => p.MaShipper != null ? p.Shipper.HoTen : ""),
             grid.Column("ThoiGianDat", "Thời gian đặt"),
-            grid.Column("DaThanhToan", "Tình trạng thanh toán"),
             grid.Column("ThoiGianGiao", "Dự tính thời gian giao"),
             grid.Column("TinhTrangGiaoHang", "Tình trạng giao hàng"),
             grid.Column("DinhViKhachHang", "Định vị khách hàng"),

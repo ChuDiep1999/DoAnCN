@@ -1,0 +1,75 @@
+﻿@using DoAnChuyenNganh.Models
+@model DonDatHang
+@{
+    ViewBag.Title = "ChonShipper";
+    Layout = "~/Views/Layout/HomeLayout.cshtml";
+}
+
+<h2>Thông tin đơn hàng thuộc <font color="#f65e84">@Model.Kho.TenKho</font></h2>
+<div class="form-three widget-shadow">
+    @using (Html.BeginForm())
+    {
+        @Html.Hidden("MaDonDatHang", Model.MaDonDatHang);
+        @Html.AntiForgeryToken()
+        <table class="table table-hover" id="table">
+            <tr>
+                <td colspan="4">
+                    <table style="width:100%;">
+                        <tr>
+                            <td>Mã đơn đặt hàng: <b style="color:red;">@Model.MaDonDatHang</b></td>
+                            <td>Thời gian đặt: <b style="color:red;">@Model.ThoiGianDat </b></td>
+                            <td>Nơi giao: <b style="color:red;">@Model.DinhViKhachHang </b></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+        <div class="form-group">
+            <label for="focusedinput" class="col-sm-2 control-label">Chọn shipper theo mã</label>
+            <div class="col-sm-8">
+                @Html.DropDownList("MaShipper", null, new { @class = "form-control" })
+            </div>
+            <button type="submit" class="btn btn-default">Lưu thông tin</button>
+        </div>
+        <div class="panel-body widget-shadow">
+            @{ IEnumerable<Shipper> listShipper = (IEnumerable<Shipper>)ViewBag.listShipper;}
+            <h4>Danh sách shipper thuộc kho <font color="#f65e84">@Model.Kho.TenKho</font> đang rảnh</h4>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Mã Shipper</th>
+                        <th>Họ tên</th>
+                        <th>Thuộc Kho</th>
+                        <th>Ca làm</th>
+                        <th>Đang giao hàng</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in listShipper)
+                    {
+                        <tr>
+                            <td>
+                                @item.MaShipper
+                            </td>
+                            <td>
+                                @item.HoTen
+                            </td>
+                            
+                            <td>
+                                @item.Kho.TenKho
+                            </td>
+                            <td>
+                                @item.CaLam.CaLam1
+                            </td>
+                            <td>
+                                @item.DangDiGiao
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    }
+</div>
+

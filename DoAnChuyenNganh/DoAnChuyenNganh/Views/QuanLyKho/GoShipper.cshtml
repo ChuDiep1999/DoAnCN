@@ -1,0 +1,39 @@
+﻿@model DoAnChuyenNganh.Models.DonDatHang
+@{
+    ViewBag.Title = "GoShipper";
+    Layout = "~/Views/Layout/HomeLayout.cshtml";
+}
+
+<h3 class="title1">Gỡ đơn hàng @Html.DisplayFor(model=>model.MaDonDatHang) khỏi shipper @Html.DisplayFor(model => model.Shipper.HoTen)</h3>
+<h4 class=" text-danger">Bạn có chắc muốn gỡ shipper chứ?</h4>
+
+<br/>
+<div class="blank-page widget-shadow scroll" id="style-2 div1">
+    <h4> Thông tin đơn đặt hàng </h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Mã đơn đặt hàng
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MaDonDatHang)
+        </dd>
+        <dt>
+            Tên shipper phụ trách
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Shipper.HoTen)
+        </dd>
+    </dl>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+<div class="form-actions no-color">
+    <input type="submit" value="Gỡ shipper" class="btn btn-warning" /> |
+    @Html.ActionLink("Quay lại danh sách", "XemDonHangChuaGiao", new { id = Model.MaShipper})
+</div>
+     }
+</div>
+
+
+

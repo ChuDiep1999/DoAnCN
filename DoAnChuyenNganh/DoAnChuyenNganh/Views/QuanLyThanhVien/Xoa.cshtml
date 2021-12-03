@@ -1,0 +1,55 @@
+﻿@model DoAnChuyenNganh.Models.ThanhVien
+@{
+    ViewBag.Title = "Xoa";
+    Layout = "~/Views/Layout/HomeLayout.cshtml";
+}
+
+<h3 class="title1">Xóa thành viên</h3>
+<h4 class="text-danger">Bạn có chắc chắn xóa kho này chứ?</h4>
+<br />
+
+<div class="blank-page widget-shadow scroll" id="style-2 div1">
+    <h4> Thông tin thành viên</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Mã thành viên
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MaThanhVien)
+        </dd>
+        <dt>
+            Họ tên thành viên
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.HoTen)
+        </dd>
+        <dt>
+            Địa chỉ
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DiaChi)
+        </dd>
+        <dt>
+            Email
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt>
+            Số điện thoại
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SDT)
+        </dd>
+    </dl>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-default" /> |
+            @Html.ActionLink("Quay lại danh sách", "Index")
+        </div>
+    }
+</div>

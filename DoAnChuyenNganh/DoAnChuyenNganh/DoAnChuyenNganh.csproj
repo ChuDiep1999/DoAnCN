@@ -187,6 +187,7 @@
     <Compile Include="Controllers\QuanLyKhuVucController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\QuanLyKhoController.cs" />
+    <Compile Include="Controllers\QuanLyShipperController.cs" />
     <Compile Include="Controllers\QuanLyThanhVienController.cs" />
     <Compile Include="Controllers\ShipperController.cs" />
     <Compile Include="Controllers\TaiKhoanController.cs" />
@@ -535,6 +536,10 @@
     <Content Include="Views\QuanLyKho\ChonShipper.cshtml" />
     <Content Include="Views\QuanLyThanhVien\Index.cshtml" />
     <Content Include="Views\QuanLyThanhVien\ChinhSua.cshtml" />
+    <Content Include="Views\QuanLyThanhVien\Xoa.cshtml" />
+    <Content Include="Views\QuanLyShipper\Index.cshtml" />
+    <Content Include="Views\QuanLyShipper\ChinhSua.cshtml" />
+    <Content Include="Views\QuanLyShipper\Xoa.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

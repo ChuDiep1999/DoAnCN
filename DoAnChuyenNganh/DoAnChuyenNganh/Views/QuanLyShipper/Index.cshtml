@@ -1,0 +1,67 @@
+﻿@using DoAnChuyenNganh.Models
+@using PagedList.Mvc
+@model PagedList.IPagedList<Shipper>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Layout/HomeLayout.cshtml";
+}
+<h2>Danh sách shipper</h2>
+<div class="form-three widget-shadow">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Mã shipper</th>
+                <th>Họ tên</th>
+                <th>Tên đăng nhập</th>
+                <th>Số điện thoại</th>
+                <th>Email</th>
+                <th>Ca làm</th>
+                <th>Loại thành viên</th>
+                <th>Đang đi giao</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaShipper)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenDangNhap)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HoTen)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SDT)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CaLam.CaLam1)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LoaiThanhVien.TenLoaiThanhVien)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DangDiGiao)
+                </td>
+                <td>
+                    @Html.ActionLink("Chỉnh sửa", "ChinhSua", new { id = item.MaShipper }) |
+                    @Html.ActionLink("Xóa", "Xoa", new { id = item.MaShipper })
+                </td>
+
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div class="dlink">
+    <br />
+    Trang@( Model.PageCount<Model.PageNumber ? 0: Model.PageNumber)/@Model.PageCount
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
+</div>
+
+

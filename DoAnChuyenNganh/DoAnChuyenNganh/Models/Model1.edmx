@@ -11,6 +11,8 @@
           </Key>
           <Property Name="MaCa" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CaLam" Type="nvarchar" MaxLength="50" />
+          <Property Name="ThoiGianBatDau" Type="time" Precision="7" />
+          <Property Name="ThoiGianKetThuc" Type="time" Precision="7" />
         </EntityType>
         <EntityType Name="ChiTietDonDatHang">
           <Key>
@@ -44,6 +46,9 @@
           <Property Name="DinhViKhachHang" Type="nvarchar(max)" />
           <Property Name="ThoiGianGiao" Type="float" />
           <Property Name="MaKho" Type="int" />
+          <Property Name="DiaChi" Type="nvarchar(max)" />
+          <Property Name="HoTenKhachHang" Type="nvarchar" MaxLength="100" />
+          <Property Name="SDTKhachHang" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Kho">
           <Key>
@@ -127,6 +132,7 @@
           <Property Name="CauHoi" Type="nvarchar" MaxLength="50" />
           <Property Name="CauTraLoi" Type="nvarchar" MaxLength="50" />
           <Property Name="MaLoaiThanhVien" Type="int" />
+          <Property Name="AnhDaiDien" Type="nvarchar(max)" />
         </EntityType>
         <Association Name="FK_ChiTietDonDatHang_DonDatHang">
           <End Role="DonDatHang" Type="Self.DonDatHang" Multiplicity="0..1" />
@@ -361,6 +367,8 @@
           <Property Name="MaCa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CaLam1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Shippers" Relationship="Self.FK_Shipper_CaLam" FromRole="CaLam" ToRole="Shipper" />
+          <Property Name="ThoiGianBatDau" Type="Time" Precision="7" />
+          <Property Name="ThoiGianKetThuc" Type="Time" Precision="7" />
         </EntityType>
         <EntityType Name="ChiTietDonDatHang">
           <Key>
@@ -401,6 +409,9 @@
           <Property Name="ThoiGianGiao" Type="Double" />
           <Property Name="MaKho" Type="Int32" />
           <NavigationProperty Name="Kho" Relationship="Ship2hModel.FK_DonDatHang_Kho" FromRole="DonDatHang" ToRole="Kho" />
+          <Property Name="DiaChi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HoTenKhachHang" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SDTKhachHang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Kho">
           <Key>
@@ -502,6 +513,7 @@
           <Property Name="CauTraLoi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="MaLoaiThanhVien" Type="Int32" />
           <NavigationProperty Name="LoaiThanhVien" Relationship="Self.FK_ThanhVien_LoaiThanhVien" FromRole="ThanhVien" ToRole="LoaiThanhVien" />
+          <Property Name="AnhDaiDien" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_Shipper_CaLam">
           <End Role="CaLam" Type="Self.CaLam" Multiplicity="0..1" />
@@ -734,6 +746,8 @@
           <EntitySetMapping Name="CaLams">
             <EntityTypeMapping TypeName="Ship2hModel.CaLam">
               <MappingFragment StoreEntitySet="CaLam">
+                <ScalarProperty Name="ThoiGianKetThuc" ColumnName="ThoiGianKetThuc" />
+                <ScalarProperty Name="ThoiGianBatDau" ColumnName="ThoiGianBatDau" />
                 <ScalarProperty Name="MaCa" ColumnName="MaCa" />
                 <ScalarProperty Name="CaLam1" ColumnName="CaLam" />
               </MappingFragment>
@@ -764,6 +778,9 @@
           <EntitySetMapping Name="DonDatHangs">
             <EntityTypeMapping TypeName="Ship2hModel.DonDatHang">
               <MappingFragment StoreEntitySet="DonDatHang">
+                <ScalarProperty Name="SDTKhachHang" ColumnName="SDTKhachHang" />
+                <ScalarProperty Name="HoTenKhachHang" ColumnName="HoTenKhachHang" />
+                <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
                 <ScalarProperty Name="MaKho" ColumnName="MaKho" />
                 <ScalarProperty Name="ThoiGianGiao" ColumnName="ThoiGianGiao" />
                 <ScalarProperty Name="MaDonDatHang" ColumnName="MaDonDatHang" />
@@ -852,6 +869,7 @@
           <EntitySetMapping Name="ThanhViens">
             <EntityTypeMapping TypeName="Ship2hModel.ThanhVien">
               <MappingFragment StoreEntitySet="ThanhVien">
+                <ScalarProperty Name="AnhDaiDien" ColumnName="AnhDaiDien" />
                 <ScalarProperty Name="MaThanhVien" ColumnName="MaThanhVien" />
                 <ScalarProperty Name="TenDangNhap" ColumnName="TenDangNhap" />
                 <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />

@@ -21,12 +21,26 @@
                             <td>Mã đơn hàng: <b style="color:red;">@Model.MaDonDatHang @Html.Hidden("MaDonDatHang", @Model.MaDonDatHang)</b></td>
                             <td>Mã shipper: <b style="color:red;">@Model.Shipper.MaShipper </b></td>
                             <td>Tên Shipper: <b style="color:red;">@Model.Shipper.HoTen </b></td>
+                            <td>Số điện thoại khách hàng: <b style="color:red;">@Model.SDTKhachHang </b> </td>
+                            
                             <td>Ngày đặt: @Model.ThoiGianDat.Value.ToString("dd-MM-yyyy HH:mm:ss")</td>
-                            <td>Đã thanh toán: @Html.EditorFor(model => model.DaThanhToan, new { @class="input-sm form-control w-sm inline v-middle"})</td>
+                            <td>Đã thanh toán: @Html.EditorFor(model => model.DaThanhToan, new { @class = "input-sm form-control w-sm inline v-middle" })</td>
                             <td>Đã giao: @Html.EditorFor(model => model.TinhTrangGiaoHang, new { @class = "input-sm form-control w-sm inline v-middle" })</td>
                         </tr>
                     </table>
                 </td>
+            </tr>
+            <tr>
+                <td colspan="4">
+                    <table style="width:100%;">
+                        <tr>
+                            <td colspan="4">
+                                Địa chỉ khách hàng: <b style="color:red;">@Model.DiaChi </b>
+                            </td>
+                            <td>Định vị khách hàng: <b style="color:red;">@Model.DinhViKhachHang </b> </td>
+                        </tr>
+                    </table>
+                    </td>
             </tr>
             <tr>
                 <td><b>Sản phẩm</b></td>
@@ -51,8 +65,30 @@
             </tr>
         </table>
         <br /><br />
-        <input type="button" value="In đơn hàng" id="btnInDonHang" />
-        <input type="submit" value="Lưu đơn hàng" />
+        
+    </div>
+    <div class="row table">
+        <div class="col-md-12">
+            <div>
+                <div>
+                    <br />
+                    Di chuyển từ : <input id="travelfrom" type="text" name="name" class="form-control" value=@Model.Kho.DinhViKho />
+                    Tới : <input class="form-control" id="travelto" type="text" name="name" value=@Model.DinhViKhachHang />
+                    <br />
+                    <input class="btn btn-success" type="button" value="Xem quãng đường" onclick="GetRoute()" />
+                    <input type="submit" class="btn btn-success" value="Lưu đơn hàng" />
+                </div>
+                <br />
+                <div>
+                    <div id="dvDistance">
+                    </div>
+                </div>
+
+            </div>
+
+            <div id="dvMap" style="min-height:500px"></div>
+
+        </div>
     </div>
 }
 <script>
@@ -70,4 +106,73 @@
         printWindow.print();
     }
 </script>
+
+<!--ENSURE YOU CHANGE TO YOUR OWN API KEY HERE !!! -->
+<script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyBsZrS5LkAXAqzgVYMJQQMYOoWgYCHHZTU" type="text/javascript"></script>
+
+<!-- code for example 1 -->
+<script>
+    var source, destination;
+    var directionsDisplay;
+    var directionsService = new google.maps.DirectionsService();
+    // initialise the location of the map on Chichester in England (ref lat and lng)
+    var map = new google.maps.Map(document.getElementById('dvMap'), {
+        center: { lat: 10.801509, lng: 106.714009 },
+        zoom: 13,
+        mapTypeId: 'roadmap'
+    });
+
+    google.maps.event.addDomListener(window, 'load', function () {
+        new google.maps.places.SearchBox(document.getElementById('travelfrom'));
+        new google.maps.places.SearchBox(document.getElementById('travelto'));
+        directionsDisplay = new google.maps.DirectionsRenderer({ 'draggable': true });
+    });
+
+    function GetRoute() {
+
+        directionsDisplay.setMap(map);
+
+        source = document.getElementById("travelfrom").value;
+        destination = document.getElementById("travelto").value;
+
+        var request = {
+            origin: source,
+            destination: destination,
+            travelMode: google.maps.TravelMode.DRIVING
+        };
+
+        directionsService.route(request, function (response, status) {
+            if (status == google.maps.DirectionsStatus.OK) {
+                directionsDisplay.setDirections(response);
+            }
+        });
+
+        //*********DISTANCE AND DURATION**********************//
+        var service = new google.maps.DistanceMatrixService();
+        service.getDistanceMatrix({
+            origins: [source],
+            destinations: [destination],
+            travelMode: google.maps.TravelMode.DRIVING,
+            unitSystem: google.maps.UnitSystem.METRIC,
+            avoidHighways: false,
+            avoidTolls: false
+        }, function (response, status) {
+
+            if (status == google.maps.DistanceMatrixStatus.OK && response.rows[0].elements[0].status != "ZERO_RESULTS") {
+                var distance = response.rows[0].elements[0].distance.text;
+                var duration = response.rows[0].elements[0].duration.value;
+                var dvDistance = document.getElementById("dvDistance");
+                duration = parseFloat(duration / 60).toFixed(2);
+                dvDistance.innerHTML = "";
+                dvDistance.innerHTML += "Khoảng cách: " + distance + "<br />";
+                dvDistance.innerHTML += "Thời gian:" + duration + " phút ";
+
+            } else {
+                alert("Unable to find the distance via road.");
+            }
+        });
+    }
+
+</script>
+
 

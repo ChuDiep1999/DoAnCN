@@ -28,6 +28,9 @@ namespace DoAnChuyenNganh.Models
         public string DinhViKhachHang { get; set; }
         public Nullable<double> ThoiGianGiao { get; set; }
         public Nullable<int> MaKho { get; set; }
+        public string DiaChi { get; set; }
+        public string HoTenKhachHang { get; set; }
+        public string SDTKhachHang { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietDonDatHang> ChiTietDonDatHangs { get; set; }

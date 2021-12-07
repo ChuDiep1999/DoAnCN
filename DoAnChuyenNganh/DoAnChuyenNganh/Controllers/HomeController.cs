@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace DoAnChuyenNganh.Controllers
 {
@@ -38,7 +39,14 @@ namespace DoAnChuyenNganh.Controllers
             }
 
         }
-        
+        public void PhanQuyen(string TaiKhoan, string Quyen)
+        {
+            FormsAuthentication.Initialize();
+            var ticket = new FormsAuthenticationTicket(1, TaiKhoan, DateTime.Now, DateTime.Now.AddHours(3), false, Quyen, FormsAuthentication.FormsCookiePath);
+            var cookie = new HttpCookie(FormsAuthentication.FormsCookieName, FormsAuthentication.Encrypt(ticket));
+            if (ticket.IsPersistent) cookie.Expires = ticket.Expiration;
+            Response.Cookies.Add(cookie);
+        }
         public ActionResult DangNhap()
         {
             return View();
@@ -52,7 +60,18 @@ namespace DoAnChuyenNganh.Controllers
             ThanhVien tv = db.ThanhViens.SingleOrDefault(n => n.TenDangNhap  == taikhoan && n.MatKhau == matkhau);
             if (tv != null)
             {
-                Session["TaiKhoan"] = tv;
+                var listQuyen = db.LoaiThanhVien_Quyen.Where(n => n.MaLoaiThanhVien == tv.MaLoaiThanhVien);
+                string Quyen = "";
+                if (listQuyen.Count() != 0)
+                {
+                    foreach (var item in listQuyen)
+                    {
+                        Quyen += item.Quyen.MaQuyen + ",";
+                    }
+                    Quyen = Quyen.Substring(0, Quyen.Length - 1);
+                    PhanQuyen(tv.TenDangNhap.ToString(), Quyen);
+                }    
+                    Session["TaiKhoan"] = tv;
                 Session["HoTen"] = data.FirstOrDefault().HoTen;
                 Session["Id"]= data.FirstOrDefault().MaThanhVien;
                 Session["LoaiThanhVien"] = data.FirstOrDefault().LoaiThanhVien;
@@ -60,6 +79,10 @@ namespace DoAnChuyenNganh.Controllers
                 
             }
             ViewBag.ThongBaoDangNhap = "Thông tin đăng nhập không chính xác";
+            return View();
+        }
+        public ActionResult LoiPhanQuyen()
+        {
             return View();
         }
         public ActionResult DangXuat()

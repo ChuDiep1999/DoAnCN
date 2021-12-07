@@ -273,6 +273,10 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\Erro\css\font-awesome.min.css" />
+    <Content Include="Content\Erro\css\style.css" />
+    <Content Include="Content\Erro\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\Erro\images\banner.jpg" />
     <Content Include="Content\HomeLayout\css\animate.css" />
     <Content Include="Content\HomeLayout\css\bootstrap.css" />
     <Content Include="Content\HomeLayout\css\custom.css" />
@@ -347,6 +351,7 @@
     <Content Include="Content\Images\6.jpg" />
     <Content Include="Content\Images\7.jpg" />
     <Content Include="Content\Images\8.jpg" />
+    <Content Include="Content\Images\avtadmin.jpg" />
     <Content Include="Content\LoginLayout\css\font-awesome.css" />
     <Content Include="Content\LoginLayout\css\style.css" />
     <Content Include="Content\LoginLayout\images\women.jpg" />
@@ -455,6 +460,11 @@
     <Content Include="Content\ShipperLayout\fonts\FontAwesome.otf" />
     <Content Include="Content\ShipperLayout\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Content\ShipperLayout\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Content\Erro\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\Erro\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\Erro\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\Erro\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\Erro\fonts\FontAwesome.otf" />
     <None Include="Scripts\jquery-3.6.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.6.0.js" />
     <Content Include="Scripts\jquery-3.6.0.min.js" />
@@ -540,6 +550,11 @@
     <Content Include="Views\QuanLyShipper\Index.cshtml" />
     <Content Include="Views\QuanLyShipper\ChinhSua.cshtml" />
     <Content Include="Views\QuanLyShipper\Xoa.cshtml" />
+    <Content Include="Views\Shipper\DangKy.cshtml" />
+    <Content Include="Views\Shipper\DoiMatKhau.cshtml" />
+    <Content Include="Views\QuanLyShipper\ShipperChuaPhanCong.cshtml" />
+    <Content Include="Views\QuanLyShipper\PhanCong.cshtml" />
+    <Content Include="Views\Home\LoiPhanQuyen.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

@@ -1,0 +1,82 @@
+﻿@using DoAnChuyenNganh.Models
+@using CaptchaMvc.HtmlHelpers
+@using CaptchaMvc
+@model Shipper
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Visitors an Admin Panel Category Bootstrap Responsive Website Template | Registration :: w3layouts</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="keywords" content="Visitors Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design">
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- bootstrap-css -->
+    <link rel="stylesheet" href="~/Content/ShipperLayout/css/bootstrap.min.css">
+    <!-- //bootstrap-css -->
+    <!-- Custom CSS -->
+    <link href="~/Content/ShipperLayout/css/style.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/ShipperLayout/css/style-responsive.css" rel="stylesheet">
+    <!-- font CSS -->
+    <link href="//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic" rel="stylesheet" type="text/css">
+    <!-- font-awesome icons -->
+    <link rel="stylesheet" href="~/Content/ShipperLayout/css/font.css" type="text/css">
+    <link href="~/Content/ShipperLayout/css/font-awesome.css" rel="stylesheet">
+    <!-- //font-awesome icons -->
+    <script src="~/Content/ShipperLayout/js/jquery2.0.3.min.js"></script>
+</head>
+<body style="">
+    <div class="reg-w3">
+        <div class="w3layouts-main">
+            <h2>Register Now</h2>
+            @using (Html.BeginForm())
+            {
+                <div>
+                    <h4 style="font-weight:bold;color:red; text-align:center">@ViewBag.ThongBaoDangKyShipper</h4>
+                </div>
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div>
+                    @Html.ValidationMessageFor(model => model.TenDangNhap, "", new { @class = "text-danger" })
+                    @Html.TextBoxFor(model => model.TenDangNhap, new { @class = "ggg", @placeholder = "Tên đăng nhập" })
+                </div>
+                <div>
+                    @Html.ValidationMessageFor(model => model.MatKhau, "", new { @class = "text-danger" })
+                    @Html.PasswordFor(model => model.MatKhau, new { @class = "ggg", @placeholder = "Mật khẩu" })
+                </div>
+                <div>
+                    <p class="text-danger">@ViewBag.error2</p>
+                    @Html.PasswordFor(model => model.NhapLaiMatKhau, new { @class = "ggg", @placeholder = "Nhập lại mật khẩu" })
+                </div>
+                <div>
+                    @Html.ValidationMessageFor(model => model.HoTen, "", new { @class = "text-danger" })
+                    @Html.TextBoxFor(model => model.HoTen, new { @class = "ggg", @placeholder = "Họ tên" })
+                </div>
+                <div>
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                    @Html.TextBoxFor(model => model.Email, new { @class = "ggg", @placeholder = "Email" })
+                </div>
+                @Html.TextBoxFor(model => model.SDT, new { @class = "ggg", @placeholder = "Số điện thoại" })
+                @Html.Captcha(5)
+                <div class="clearfix"></div>
+                <input type="submit" value="Đăng ký" name="register">
+            }
+            <p>Bạn đã có tài khoản.<a href="@Url.Action("DangNhap")">Đăng nhập</a></p>
+        </div>
+    </div>
+    <script src="~/Content/ShipperLayout/js/bootstrap.js"></script>
+    <script src="~/Content/ShipperLayout/js/jquery.dcjqaccordion.2.7.js"></script>
+    <script src="~/Content/ShipperLayout/js/scripts.js"></script>
+    <script src="~/Content/ShipperLayout/js/jquery.slimscroll.js"></script>
+    <script src="~/Content/ShipperLayout/js/jquery.nicescroll.js"></script>
+    <!--[if lte IE 8]><script language="javascript" type="text/javascript" src="js/flot-chart/excanvas.min.js"></script><![endif]-->
+    <script src="~/Content/ShipperLayout/js/jquery.scrollTo.js"></script>
+
+
+</body>
+</html>

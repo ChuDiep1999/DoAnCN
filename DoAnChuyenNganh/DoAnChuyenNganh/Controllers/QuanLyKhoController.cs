@@ -294,12 +294,13 @@ namespace DoAnChuyenNganh.Controllers
                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
                 }
                 DonDatHang model = db.DonDatHangs.SingleOrDefault(n => n.MaDonDatHang == id);
+                TimeSpan time = model.ThoiGianDat.Value.TimeOfDay;
                 if (model == null)
                 {
                     return HttpNotFound();
                 }
-                var listShipper = db.Shippers.Where(n => n.MaKho == model.MaKho&& n.DangDiGiao == false);
-                ViewBag.MaShipper = new SelectList(db.Shippers.Where(n=>n.MaKho==model.MaKho&&n.DangDiGiao==false).OrderBy(n => n.MaShipper), "MaShipper", "MaShipper", model.MaShipper);
+                var listShipper = db.Shippers.Where(n => n.MaKho == model.MaKho&& n.DangDiGiao == false&& n.CaLam.ThoiGianBatDau <= time && n.CaLam.ThoiGianKetThuc >= time);
+                ViewBag.MaShipper = new SelectList(db.Shippers.Where(n=>n.MaKho==model.MaKho&&n.DangDiGiao==false && n.CaLam.ThoiGianBatDau <= time && n.CaLam.ThoiGianKetThuc >= time).OrderBy(n => n.MaShipper), "MaShipper", "MaShipper", model.MaShipper);
                 ViewBag.listShipper = listShipper;
                 return View(model);
             }
@@ -311,7 +312,7 @@ namespace DoAnChuyenNganh.Controllers
         [HttpPost]
         public ActionResult ChonShipper(DonDatHang ddh)
         {
-            ViewBag.MaShipper = new SelectList(db.Shippers.Where(n => n.MaKho == ddh.MaKho && n.DangDiGiao == false).OrderBy(n => n.MaShipper), "MaShipper", "MaShipper", ddh.MaShipper);
+            
             DonDatHang tvUpdate = db.DonDatHangs.Single(n => n.MaDonDatHang == ddh.MaDonDatHang);
             tvUpdate.MaShipper = ddh.MaShipper;
             db.SaveChanges();

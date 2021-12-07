@@ -35,13 +35,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             {
                 <input type="text" class="ggg" name="txtTenDangNhap" placeholder="Tài khoản" required="">
                 <input type="password" class="ggg" name="txtMatKhau" placeholder="Mật khẩu" required="">
-
                 <div class="clearfix"></div>
                 <input type="submit" value="Sign In" id="btnDangNhap1">
             }
-            
+
             <p style="font-weight:bold;color:red;">@ViewBag.ThongBaoDangNhapShipper</p>
             <p>Bạn là thành viên quản trị ?<a href="@Url.Action("DangNhap","Home")">Đăng nhập tại đây</a></p>
+            <p>Bạn chưa có tài khoản ?<a href="@Url.Action("DangKy")">Đăng ký tại đây</a></p>
         </div>
     </div>
     <script src="~/Content/ShipperLayout/js/bootstrap.js"></script>

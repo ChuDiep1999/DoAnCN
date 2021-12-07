@@ -7,6 +7,8 @@
     <Property Name="MaCa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="CaLam1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Shippers" Relationship="Self.FK_Shipper_CaLam" FromRole="CaLam" ToRole="Shipper" />
+    <Property Name="ThoiGianBatDau" Type="Time" Precision="7" />
+    <Property Name="ThoiGianKetThuc" Type="Time" Precision="7" />
   </EntityType>
   <EntityType Name="ChiTietDonDatHang">
     <Key>
@@ -47,6 +49,9 @@
     <Property Name="ThoiGianGiao" Type="Double" />
     <Property Name="MaKho" Type="Int32" />
     <NavigationProperty Name="Kho" Relationship="Ship2hModel.FK_DonDatHang_Kho" FromRole="DonDatHang" ToRole="Kho" />
+    <Property Name="DiaChi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="HoTenKhachHang" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SDTKhachHang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="Kho">
     <Key>
@@ -148,6 +153,7 @@
     <Property Name="CauTraLoi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="MaLoaiThanhVien" Type="Int32" />
     <NavigationProperty Name="LoaiThanhVien" Relationship="Self.FK_ThanhVien_LoaiThanhVien" FromRole="ThanhVien" ToRole="LoaiThanhVien" />
+    <Property Name="AnhDaiDien" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
   </EntityType>
   <Association Name="FK_Shipper_CaLam">
     <End Role="CaLam" Type="Self.CaLam" Multiplicity="0..1" />

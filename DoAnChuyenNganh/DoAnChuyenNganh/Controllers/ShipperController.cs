@@ -1,4 +1,5 @@
-﻿using DoAnChuyenNganh.Models;
+﻿using CaptchaMvc.HtmlHelpers;
+using DoAnChuyenNganh.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,71 @@ namespace DoAnChuyenNganh.Controllers
     {
         Ship2hEntities db = new Ship2hEntities();
         // GET: Shipper
+        public ActionResult DangKy()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult DangKy(Shipper sp)
+        {
+
+            // Kiểm tra capcha hợp lệ
+            if (this.IsCaptchaValid("Captcha is not valid"))
+            {
+                if (ModelState.IsValid)
+                {
+                    var check = db.Shippers.FirstOrDefault(s => s.TenDangNhap == sp.TenDangNhap);
+                    if (sp.MatKhau == sp.NhapLaiMatKhau)
+                    {
+                        if (check == null)
+                        {
+                            ViewBag.ThongBaoDangKyShipper = "Đăng ký thành công";
+                            //thêm thành viên
+                            sp.MaLoaiThanhVien = 7;
+                            sp.DangDiGiao = false;
+                            db.Shippers.Add(sp);
+                            db.SaveChanges();
+                            return View();
+                        }
+                        else
+                        {
+                            ViewBag.error = "Tài khoản đã tồn tại";
+                            ViewBag.ThongBaoDangKyShipper = "Đăng ký thất bại";
+                            return View();
+                        }
+                    }
+                    else
+                    {
+                        ViewBag.error2 = "Mật khẩu không trùng";
+                        ViewBag.ThongBaoDangKyShipper = "Đăng ký thất bại";
+                        return View();
+                    }
+
+                }
+                else
+                {
+                    ViewBag.ThongBaoDangKyShipper = "Đăng ký thất bại";
+                    return View();
+                }
+
+            }
+            ViewBag.ThongBaoDangKyShipper = "Sai mã Captcha";
+            return View();
+        }
+        public ActionResult DoiMatKhau()
+        {
+
+            if (Session["TaiKhoanShipper"] != null)
+            {
+                int id = (int)Session["IdShipper"];
+                Shipper sp = db.Shippers.SingleOrDefault(n => n.MaShipper == id);
+                return View(sp);
+            }
+            else
+            {
+                return RedirectToAction("DangNhap");
+            }
+        }
         public ActionResult DangNhap()
         {
            

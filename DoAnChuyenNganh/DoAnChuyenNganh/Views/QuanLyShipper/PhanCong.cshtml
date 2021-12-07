@@ -1,0 +1,100 @@
+﻿@using DoAnChuyenNganh.Models
+@model Shipper
+@{
+    ViewBag.Title = "PhanCong";
+    Layout = "~/Views/Layout/HomeLayout.cshtml";
+}
+
+<h3 class="title1">Chỉnh sửa thông tin shipper @Model.HoTen</h3>
+<div class="form-three widget-shadow">
+    @using (Html.BeginForm("PhanCong", "QuanLyShipper", FormMethod.Post, new { @enctype = "multipart/form-data", @class = "form-horizontal" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.Hidden("MaShipper", Model.MaShipper);
+        <div class="form-group">
+            <label for="focusedinput" class="col-sm-2 control-label">Kho</label>
+            <div class="col-sm-8">
+                @Html.DropDownList("MaKho", null, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="focusedinput" class="col-sm-2 control-label">Ca làm</label>
+            <div class="col-sm-8">
+                @Html.DropDownList("MaCa", null, new { @class = "form-control" })
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-default">Chỉnh sửa</button>
+    }
+</div>
+<div>
+    @Html.ActionLink("Quay lại danh sách", "Index")
+</div>
+<div class="panel-body widget-shadow">
+    @{ IEnumerable<CaLam> listCaLam = (IEnumerable<CaLam>)ViewBag.listCaLam;}
+    <h4>Danh sách ca làm </h4>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Mã Ca</th>
+                <th>Thời gian vào ca </th>
+                <th>Thời gian kết thúc ca</th>
+                <th>Ca làm</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in listCaLam)
+            {
+                <tr>
+                    <td>
+                        @item.MaCa
+                    </td>
+                    <td>
+                        @item.ThoiGianBatDau
+                    </td>
+
+                    <td>
+                        @item.ThoiGianKetThuc
+                    </td>
+                    <td>
+                        @item.CaLam1
+                    </td>
+
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</div>
+<div class="panel-body widget-shadow">
+    @{ IEnumerable<Kho> listKho = (IEnumerable<Kho>)ViewBag.listKho;}
+    <h4>Danh sách kho </h4>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Mã Kho</th>
+                <th>Tên Kho </th>
+                <th>Khu Vực</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in listKho)
+            {
+                <tr>
+                    <td>
+                        @item.MaKho
+                    </td>
+                    <td>
+                        @item.TenKho
+                    </td>
+
+                    <td>
+                        @item.KhuVuc.TenKhuVuc
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</div>
+

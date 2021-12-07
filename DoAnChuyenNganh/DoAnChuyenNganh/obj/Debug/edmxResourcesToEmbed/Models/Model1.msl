@@ -4,6 +4,8 @@
     <EntitySetMapping Name="CaLams">
       <EntityTypeMapping TypeName="Ship2hModel.CaLam">
         <MappingFragment StoreEntitySet="CaLam">
+          <ScalarProperty Name="ThoiGianKetThuc" ColumnName="ThoiGianKetThuc" />
+          <ScalarProperty Name="ThoiGianBatDau" ColumnName="ThoiGianBatDau" />
           <ScalarProperty Name="MaCa" ColumnName="MaCa" />
           <ScalarProperty Name="CaLam1" ColumnName="CaLam" />
         </MappingFragment>
@@ -34,6 +36,9 @@
     <EntitySetMapping Name="DonDatHangs">
       <EntityTypeMapping TypeName="Ship2hModel.DonDatHang">
         <MappingFragment StoreEntitySet="DonDatHang">
+          <ScalarProperty Name="SDTKhachHang" ColumnName="SDTKhachHang" />
+          <ScalarProperty Name="HoTenKhachHang" ColumnName="HoTenKhachHang" />
+          <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
           <ScalarProperty Name="MaKho" ColumnName="MaKho" />
           <ScalarProperty Name="ThoiGianGiao" ColumnName="ThoiGianGiao" />
           <ScalarProperty Name="MaDonDatHang" ColumnName="MaDonDatHang" />
@@ -122,6 +127,7 @@
     <EntitySetMapping Name="ThanhViens">
       <EntityTypeMapping TypeName="Ship2hModel.ThanhVien">
         <MappingFragment StoreEntitySet="ThanhVien">
+          <ScalarProperty Name="AnhDaiDien" ColumnName="AnhDaiDien" />
           <ScalarProperty Name="MaThanhVien" ColumnName="MaThanhVien" />
           <ScalarProperty Name="TenDangNhap" ColumnName="TenDangNhap" />
           <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />

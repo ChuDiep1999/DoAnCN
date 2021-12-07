@@ -25,7 +25,7 @@ namespace DoAnChuyenNganh.Controllers
                 return RedirectToAction("DangNhap", "Home");
             }
         }
-       
+
         [HttpGet]
         public ActionResult ChinhSua(int? id)
         {
@@ -41,7 +41,7 @@ namespace DoAnChuyenNganh.Controllers
                 {
                     return HttpNotFound();
                 }
-                
+
                 return View(tv);
             }
             else
@@ -88,6 +88,56 @@ namespace DoAnChuyenNganh.Controllers
         {
             Shipper tv = db.Shippers.SingleOrDefault(n => n.MaShipper == id);
             db.Shippers.Remove(tv);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+        public ActionResult ShipperChuaPhanCong(int? page)
+        {
+            if (Session["TaiKhoan"] != null)
+            {
+                int PageSize = 9;
+                int PageNumber = (page ?? 1);
+                return View(db.Shippers.Where(n => n.MaCa == null && n.MaKho == null).OrderBy(n => n.MaShipper).ToPagedList(PageNumber, PageSize));
+            }
+            else
+            {
+                return RedirectToAction("DangNhap", "Home");
+            }
+        }
+        public ActionResult PhanCong(int? id)
+        {
+            if (Session["TaiKhoan"] != null)
+            {
+                if (id == null)
+                {
+                    Response.StatusCode = 404;
+                    return null;
+                }
+                Shipper tv = db.Shippers.SingleOrDefault(n => n.MaShipper == id);
+                var listKho = db.Khoes.OrderBy(n => n.MaKho);
+                var listCaLam = db.CaLams.OrderBy(n => n.MaCa);
+                ViewBag.listKho = listKho;
+                ViewBag.listCaLam = listCaLam;
+                ViewBag.MaKho = new SelectList(db.Khoes.OrderBy(n => n.MaKho), "MaKho", "TenKho", tv.MaKho);
+                ViewBag.MaCa = new SelectList(db.CaLams.OrderBy(n => n.MaCa), "MaCa", "CaLam1", tv.MaCa);
+                if (tv == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(tv);
+            }
+            else
+            {
+                return RedirectToAction("DangNhap", "Home");
+            }
+        }
+        [HttpPost]
+        public ActionResult PhanCong(Shipper sp)
+        {
+            Shipper tvUpdate = db.Shippers.Single(n => n.MaShipper == sp.MaShipper);
+            int id = (int)sp.MaKho;
+            tvUpdate.MaCa = sp.MaCa;
+            tvUpdate.MaKho = sp.MaKho;
             db.SaveChanges();
             return RedirectToAction("Index");
         }

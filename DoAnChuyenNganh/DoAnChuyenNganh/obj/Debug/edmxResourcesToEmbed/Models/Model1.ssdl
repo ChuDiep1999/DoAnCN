@@ -6,6 +6,8 @@
     </Key>
     <Property Name="MaCa" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="CaLam" Type="nvarchar" MaxLength="50" />
+    <Property Name="ThoiGianBatDau" Type="time" Precision="7" />
+    <Property Name="ThoiGianKetThuc" Type="time" Precision="7" />
   </EntityType>
   <EntityType Name="ChiTietDonDatHang">
     <Key>
@@ -39,6 +41,9 @@
     <Property Name="DinhViKhachHang" Type="nvarchar(max)" />
     <Property Name="ThoiGianGiao" Type="float" />
     <Property Name="MaKho" Type="int" />
+    <Property Name="DiaChi" Type="nvarchar(max)" />
+    <Property Name="HoTenKhachHang" Type="nvarchar" MaxLength="100" />
+    <Property Name="SDTKhachHang" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="Kho">
     <Key>
@@ -122,6 +127,7 @@
     <Property Name="CauHoi" Type="nvarchar" MaxLength="50" />
     <Property Name="CauTraLoi" Type="nvarchar" MaxLength="50" />
     <Property Name="MaLoaiThanhVien" Type="int" />
+    <Property Name="AnhDaiDien" Type="nvarchar(max)" />
   </EntityType>
   <Association Name="FK_ChiTietDonDatHang_DonDatHang">
     <End Role="DonDatHang" Type="Self.DonDatHang" Multiplicity="0..1" />

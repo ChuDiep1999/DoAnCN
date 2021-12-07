@@ -45,6 +45,7 @@ namespace DoAnChuyenNganh.Models
         public string MatKhauMoi { get; set; }
         public string MatKhauCu { get; set; }
         public Nullable<int> MaLoaiThanhVien { get; set; }
+        public string AnhDaiDien { get; set; }
     
         public virtual LoaiThanhVien LoaiThanhVien { get; set; }
     }

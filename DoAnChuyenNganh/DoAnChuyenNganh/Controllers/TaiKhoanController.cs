@@ -25,7 +25,7 @@ namespace DoAnChuyenNganh.Controllers
             }
         }
         [HttpPost]
-        public ActionResult ThongTinTaiKhoan(ThanhVien tv)
+        public ActionResult ThongTinTaiKhoan(ThanhVien tv, HttpPostedFileBase[] HinhAnh)
         {
             try
             {
@@ -49,7 +49,7 @@ namespace DoAnChuyenNganh.Controllers
         }
         public ActionResult DoiMatKhau ()
         {
-            //vòng if để bắt buộc đăng nhập thì mới sử dụng được action
+            
             if (Session["TaiKhoan"] != null)
             {
                 int id = (int)Session["Id"];

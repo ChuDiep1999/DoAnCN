@@ -22,6 +22,8 @@ namespace DoAnChuyenNganh.Models
     
         public int MaCa { get; set; }
         public string CaLam1 { get; set; }
+        public Nullable<System.TimeSpan> ThoiGianBatDau { get; set; }
+        public Nullable<System.TimeSpan> ThoiGianKetThuc { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Shipper> Shippers { get; set; }

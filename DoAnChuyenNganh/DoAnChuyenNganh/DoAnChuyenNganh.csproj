@@ -183,6 +183,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PhanQuyenController.cs" />
     <Compile Include="Controllers\QuanLyDonHangController.cs" />
     <Compile Include="Controllers\QuanLyKhuVucController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -204,10 +205,10 @@
     <Compile Include="Models\ChiTietMatHang.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ItemShipper.cs" />
     <Compile Include="Models\DonDatHang.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ItemShipper.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Kho.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -225,6 +226,8 @@
     <Compile Include="Models\MatHang.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\MetaData\Shipper.cs" />
+    <Compile Include="Models\MetaData\ThanhVien.cs" />
     <Compile Include="Models\Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -253,10 +256,6 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\DataDoAnChuyenNganh.mdf" />
-    <Content Include="App_Data\DataDoAnChuyenNganh_log.ldf">
-      <DependentUpon>DataDoAnChuyenNganh.mdf</DependentUpon>
-    </Content>
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-grid.rtl.css" />
@@ -446,13 +445,6 @@
     <Content Include="Content\RegisterLayout\fonts\Cabin-Regular.ttf" />
     <Content Include="Content\RegisterLayout\fonts\Philosopher-Regular.ttf" />
     <Content Include="Content\RegisterLayout\fonts\TitilliumWeb-Regular.ttf" />
-    <EntityDeploy Include="Models\Model1.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\Model1.edmx.diagram">
-      <DependentUpon>Model1.edmx</DependentUpon>
-    </Content>
     <Content Include="Content\ShipperLayout\fonts\fontawesome-webfont.eot" />
     <Content Include="Content\ShipperLayout\fonts\fontawesome-webfont.ttf" />
     <Content Include="Content\ShipperLayout\fonts\fontawesome-webfont.woff" />
@@ -465,6 +457,13 @@
     <Content Include="Content\Erro\fonts\fontawesome-webfont.woff" />
     <Content Include="Content\Erro\fonts\fontawesome-webfont.woff2" />
     <Content Include="Content\Erro\fonts\FontAwesome.otf" />
+    <EntityDeploy Include="Models\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.6.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.6.0.js" />
     <Content Include="Scripts\jquery-3.6.0.min.js" />
@@ -555,8 +554,14 @@
     <Content Include="Views\QuanLyShipper\ShipperChuaPhanCong.cshtml" />
     <Content Include="Views\QuanLyShipper\PhanCong.cshtml" />
     <Content Include="Views\Home\LoiPhanQuyen.cshtml" />
+    <Content Include="Views\QuanLyThanhVien\ThanhVienChuaPhanLoai.cshtml" />
+    <Content Include="Views\QuanLyThanhVien\PhanLoai.cshtml" />
+    <Content Include="Views\PhanQuyen\Index.cshtml" />
+    <Content Include="Views\PhanQuyen\PhanQuyen.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
     <Content Include="Content\bootstrap.rtl.css.map" />

@@ -72,10 +72,10 @@
   </EntityType>
   <EntityType Name="LoaiThanhVien_Quyen">
     <Key>
-      <PropertyRef Name="MaLoaiThanhVien" />
+      <PropertyRef Name="MaLTV" />
       <PropertyRef Name="MaQuyen" />
     </Key>
-    <Property Name="MaLoaiThanhVien" Type="int" Nullable="false" />
+    <Property Name="MaLTV" Type="int" Nullable="false" />
     <Property Name="MaQuyen" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="GhiChu" Type="nvarchar(max)" />
   </EntityType>
@@ -221,7 +221,7 @@
         <PropertyRef Name="MaLoaiThanhVien" />
       </Principal>
       <Dependent Role="LoaiThanhVien_Quyen">
-        <PropertyRef Name="MaLoaiThanhVien" />
+        <PropertyRef Name="MaLTV" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

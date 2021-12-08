@@ -39,6 +39,12 @@
                 @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
             </div>
         </div>
+        <div class="form-group">
+            <label for="focusedinput" class="col-sm-2 control-label">Loại thành viên</label>
+            <div class="col-sm-8">
+                @Html.DropDownList("MaLoaiThanhVien", null, new { @class = "form-control" })
+            </div>
+        </div>
         <button type="submit" class="btn btn-default">Chỉnh sửa</button>
     }
 </div>

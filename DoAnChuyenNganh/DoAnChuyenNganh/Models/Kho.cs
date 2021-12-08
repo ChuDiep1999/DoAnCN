@@ -18,8 +18,8 @@ namespace DoAnChuyenNganh.Models
         public Kho()
         {
             this.ChiTietMatHangs = new HashSet<ChiTietMatHang>();
-            this.Shippers = new HashSet<Shipper>();
             this.DonDatHangs = new HashSet<DonDatHang>();
+            this.Shippers = new HashSet<Shipper>();
         }
     
         public int MaKho { get; set; }
@@ -30,10 +30,10 @@ namespace DoAnChuyenNganh.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietMatHang> ChiTietMatHangs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DonDatHang> DonDatHangs { get; set; }
         public virtual KhuVuc KhuVuc { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Shipper> Shippers { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DonDatHang> DonDatHangs { get; set; }
     }
 }

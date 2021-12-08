@@ -18,6 +18,16 @@ namespace DoAnChuyenNganh.Controllers
             {
                 ViewBag.SoNguoiTruyCap = HttpContext.Application["SoNguoiTruyCap"].ToString(); //lay so luong nguoi truy cap
                 ViewBag.SoLuongNguoiDangOnline = HttpContext.Application["SoNguoiDangOnline"].ToString(); //lay so luong nguoi truy cap
+                ViewBag.TongDDH = ThongKeDonHang(); //Thong Ke DonHang
+                ViewBag.TongThanhVien = ThongKeThanhVien();//Thong ke thanh vien
+                ViewBag.TongShipper = ThongKeShipper();
+                ViewBag.TongKho = ThongKeKho();
+                ViewBag.SLDDHPass = ThongKeDonDatHangDaPass();
+                ViewBag.PhanTramDDH = PhanTramDonDatHang();
+                ViewBag.ShipperDG = ThongKeShipperDangGiao();
+                ViewBag.PhanTramShipper = PhanTramShipper();
+                ViewBag.ThongKeThanhVienMoiDangKy = ThongKeThanhVienMoiDangKy();
+                ViewBag.PhanTramThanhVien = PhanTramThanhVien();
                 return View();
             }
             else
@@ -25,6 +35,69 @@ namespace DoAnChuyenNganh.Controllers
                 return RedirectToAction("DangNhap");
             }
 
+        }
+        public double PhanTramThanhVien()
+        {
+            double tv = db.Shippers.Where(n => n.LoaiThanhVien == null).Count();
+            double tv1 = db.Shippers.Count();
+            double phantram = (tv / tv1) * 100;
+            return phantram;
+        }
+        public double ThongKeThanhVienMoiDangKy()
+        {
+
+            double tv = db.ThanhViens.Where(n => n.LoaiThanhVien == null).Count();
+            return tv;
+        }
+        public double PhanTramShipper()
+        {
+            double sp = db.Shippers.Where(n => n.DangDiGiao == true).Count();
+            double sp1 = db.Shippers.Count();
+            double phantram = (sp / sp1) * 100;
+            return phantram;
+        }
+        public double PhanTramDonDatHang()
+        {
+            double ddh = db.DonDatHangs.Where(n => n.DaThanhToan == true && n.TinhTrangGiaoHang == true).Count();
+            double ddh1 = db.DonDatHangs.Count();
+            double phantram = (ddh / ddh1) * 100;
+            return phantram;
+        }
+        public double ThongKeDonDatHangDaPass()
+        {
+
+            double ddh = db.DonDatHangs.Where(n=>n.DaThanhToan==true&&n.TinhTrangGiaoHang==true).Count();
+            return ddh;
+        }
+        public double ThongKeShipperDangGiao()
+        {
+
+            double sp = db.Shippers.Where(n => n.DangDiGiao == true).Count();
+            return sp;
+        }
+        public double ThongKeKho()
+        {
+            
+            double kho = db.Khoes.Count();
+            return kho;
+        }
+        public double ThongKeDonHang()
+        {
+            //Dem don dat hang
+            double ddh = db.DonDatHangs.Count();
+            return ddh;
+        }
+        public double ThongKeThanhVien()
+        {
+            
+            double sltv = db.ThanhViens.Count();
+            return sltv;
+        }
+        public double ThongKeShipper()
+        {
+            //Dem don dat hang
+            double slsp = db.Shippers.Count();
+            return slsp;
         }
         public ActionResult Index2()
         {
@@ -60,7 +133,7 @@ namespace DoAnChuyenNganh.Controllers
             ThanhVien tv = db.ThanhViens.SingleOrDefault(n => n.TenDangNhap  == taikhoan && n.MatKhau == matkhau);
             if (tv != null)
             {
-                var listQuyen = db.LoaiThanhVien_Quyen.Where(n => n.MaLoaiThanhVien == tv.MaLoaiThanhVien);
+                var listQuyen = db.LoaiThanhVien_Quyen.Where(n => n.MaLTV == tv.MaLoaiThanhVien);
                 string Quyen = "";
                 if (listQuyen.Count() != 0)
                 {

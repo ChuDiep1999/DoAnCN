@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace DoAnChuyenNganh.Controllers
 {
+    [Authorize(Roles = "QuanTri,QuanLyShipper")]
     public class QuanLyShipperController : Controller
     {
         Ship2hEntities db = new Ship2hEntities();

@@ -1,0 +1,114 @@
+﻿@using DoAnChuyenNganh.Models
+@using PagedList.Mvc
+@model PagedList.IPagedList<ThanhVien>
+
+@{
+    ViewBag.Title = "ThanhVienChuaPhanLoai";
+    Layout = "~/Views/Layout/HomeLayout.cshtml";
+}
+<ul class="tabs">
+    <li role="presentation" class="tablinks "><a href="@Url.Action("Index")">Danh sách tthành viên</a></li>
+    <li role="presentation" class="tablinks active"><a href="@Url.Action("ThanhVienChuaPhanLoai")">Danh sách shipper chưa phân loại</a></li>
+</ul>
+<h2>Danh sách thành viên chưa được phân loại</h2>
+<div class="form-three widget-shadow">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Mã Thành Viên</th>
+                <th>Họ tên</th>
+                <th>Tên đăng nhập</th>
+                <th>Số điện thoại</th>
+                <th>Email</th>
+                <th>Địa chỉ</th>
+                <th>Loại thành viên</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MaThanhVien)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TenDangNhap)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.HoTen)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SDT)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DiaChi)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LoaiThanhVien.TenLoaiThanhVien)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Phân loại", "PhanLoai", new { id = item.MaThanhVien })
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div class="dlink">
+    <br />
+    Trang@( Model.PageCount<Model.PageNumber ? 0: Model.PageNumber)/@Model.PageCount
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
+</div>
+<style>
+    .FooterAdmin {
+        display: none;
+    }
+
+    .tabs {
+        display: flex;
+    }
+
+    .tablinks {
+        border: none;
+        outline: none;
+        cursor: pointer;
+        width: 100%;
+        padding: 1rem;
+        font-size: 13px;
+        text-transform: uppercase;
+        font-weight: 600;
+        transition: 0.2s ease;
+    }
+
+        .tablinks:hover {
+            background: aqua;
+            color: #fff;
+        }
+        /* Tab active */
+        .tablinks.active {
+            background: aqua;
+            color: #fff;
+        }
+
+    /* tab content */
+    .tabcontent {
+        display: none;
+    }
+        /* Text*/
+        .tabcontent p {
+            color: #333;
+            font-size: 16px;
+        }
+        /* tab content active */
+        .tabcontent.active {
+            display: block;
+        }
+</style>
+
+
+

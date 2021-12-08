@@ -34,7 +34,7 @@ namespace DoAnChuyenNganh.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietDonDatHang> ChiTietDonDatHangs { get; set; }
-        public virtual Shipper Shipper { get; set; }
         public virtual Kho Kho { get; set; }
+        public virtual Shipper Shipper { get; set; }
     }
 }

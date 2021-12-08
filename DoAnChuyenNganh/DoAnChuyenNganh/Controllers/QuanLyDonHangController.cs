@@ -7,7 +7,7 @@ using System.Web.Mvc;
 using DoAnChuyenNganh.Models;
 namespace DoAnChuyenNganh.Controllers
 {
-    [Authorize(Roles = "QuanTri")]
+    [Authorize(Roles = "QuanTri,QuanLyDonHang")]
     public class QuanLyDonHangController : Controller
     {
         // GET: QuanLyDonHang

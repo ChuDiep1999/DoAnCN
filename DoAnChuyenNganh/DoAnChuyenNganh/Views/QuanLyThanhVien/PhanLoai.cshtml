@@ -1,0 +1,22 @@
+﻿@model DoAnChuyenNganh.Models.ThanhVien
+@{
+    ViewBag.Title = "PhanLoai";
+    Layout = "~/Views/Layout/HomeLayout.cshtml";
+}
+
+<h3 class="title1">Phân loại cho thành viên thành viên @Model.HoTen</h3>
+<div class="form-three widget-shadow">
+    @using (Html.BeginForm("PhanLoai", "QuanLyThanhVien", FormMethod.Post, new { @enctype = "multipart/form-data", @class = "form-horizontal" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.Hidden("MaThanhVien", Model.MaThanhVien);
+        <div class="form-group">
+            <label for="focusedinput" class="col-sm-2 control-label">Loại thành viên</label>
+            <div class="col-sm-8">
+                @Html.DropDownList("MaLoaiThanhVien", null, new { @class = "form-control" })
+            </div>
+
+        </div>
+        <button type="submit" class="btn btn-default">Phân loại</button>
+    }
+</div>

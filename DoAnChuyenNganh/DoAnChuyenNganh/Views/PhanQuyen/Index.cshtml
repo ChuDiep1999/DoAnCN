@@ -1,0 +1,56 @@
+﻿@using DoAnChuyenNganh.Models;
+@model IEnumerable<LoaiThanhVien>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Layout/HomeLayout.cshtml";
+    WebGrid grid = new WebGrid(source: Model, rowsPerPage: 5);
+}
+
+@grid.GetHtml(
+         tableStyle: "divTable",
+         headerStyle: "gridHead",
+         footerStyle: "gridFooter",
+         rowStyle: "gridRow",
+         alternatingRowStyle: "gridAltRow",
+         columns: grid.Columns(
+            grid.Column("MaLoaiThanhVien", "Mã loại thành viên"),
+            grid.Column("TenLoaiThanhVien", "Tên loại thành viên"),
+            grid.Column(format: p => Html.ActionLink("Phân Quyền", "PhanQuyen", new { id = p.MaLoaiThanhVien }))
+
+            ))
+<style>
+    .divTable {
+        border: 1px solid #999999;
+        width: 100%;
+    }
+
+        .divTable td {
+            border: 1px solid #999999;
+        }
+
+    .gridHead {
+        background-color: firebrick;
+    }
+
+        .gridHead > th > a {
+            color: #fff;
+        }
+
+    .gridFooter {
+        font-weight: bold;
+    }
+    /*.gridRow{
+        color: #fff;
+        background-color: blueviolet;
+    }
+    .gridAltRow{
+        color: #fff;
+        background-color: darkorange;
+    }*/
+</style>
+<style>
+    .FooterAdmin {
+        display: none;
+    }
+</style>
+

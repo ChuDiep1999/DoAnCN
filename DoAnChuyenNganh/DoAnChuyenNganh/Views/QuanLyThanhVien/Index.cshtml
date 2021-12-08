@@ -7,6 +7,10 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Layout/HomeLayout.cshtml";
 }
+<ul class="tabs">
+    <li role="presentation" class="tablinks active"><a href="@Url.Action("Index")">Danh sách thành viên</a></li>
+    <li role="presentation" class="tablinks "><a href="@Url.Action("ThanhVienChuaPhanLoai")">Danh sách thành viên chưa phân loại</a></li>
+</ul>
 <h2>Danh sách thành viên</h2>
 <div class="form-three widget-shadow">
     <table class="table">
@@ -62,4 +66,48 @@
     Trang@( Model.PageCount<Model.PageNumber ? 0: Model.PageNumber)/@Model.PageCount
     @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
 </div>
+<style>
+    .FooterAdmin {
+        display: none;
+    }
 
+    .tabs {
+        display: flex;
+    }
+
+    .tablinks {
+        border: none;
+        outline: none;
+        cursor: pointer;
+        width: 100%;
+        padding: 1rem;
+        font-size: 13px;
+        text-transform: uppercase;
+        font-weight: 600;
+        transition: 0.2s ease;
+    }
+
+        .tablinks:hover {
+            background: aqua;
+            color: #fff;
+        }
+        /* Tab active */
+        .tablinks.active {
+            background: aqua;
+            color: #fff;
+        }
+
+    /* tab content */
+    .tabcontent {
+        display: none;
+    }
+        /* Text*/
+        .tabcontent p {
+            color: #333;
+            font-size: 16px;
+        }
+        /* tab content active */
+        .tabcontent.active {
+            display: block;
+        }
+</style>

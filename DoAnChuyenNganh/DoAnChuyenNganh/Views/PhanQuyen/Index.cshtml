@@ -1,7 +1,7 @@
 ﻿@using DoAnChuyenNganh.Models;
 @model IEnumerable<LoaiThanhVien>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Danh sách quyền";
     Layout = "~/Views/Layout/HomeLayout.cshtml";
     WebGrid grid = new WebGrid(source: Model, rowsPerPage: 5);
 }

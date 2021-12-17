@@ -87,10 +87,19 @@ namespace DoAnChuyenNganh.Controllers
         [HttpPost]
         public ActionResult Xoa(int id)
         {
-            Shipper tv = db.Shippers.SingleOrDefault(n => n.MaShipper == id);
-            db.Shippers.Remove(tv);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            try
+            {
+                Shipper tv = db.Shippers.SingleOrDefault(n => n.MaShipper == id);
+                db.Shippers.Remove(tv);
+                ViewBag.ThongbaoxoaShipper = "Đã xóa Shipper thành công";
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                ViewBag.ThongbaoxoaShipper = "Shipper này đang có đơn hàng, không thể xóa";
+                return View(db.Shippers.SingleOrDefault(n => n.MaShipper == id));
+            }
         }
         public ActionResult ShipperChuaPhanCong(int? page)
         {

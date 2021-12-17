@@ -1,7 +1,7 @@
 ﻿@using DoAnChuyenNganh.Models;
 @model IEnumerable<DonDatHang>
     @{
-        ViewBag.Title = "ChuaGiao";
+        ViewBag.Title = "Đơn Hàng Đã Giao";
         Layout = "~/Views/Layout/_ShipperLayout.cshtml";
         WebGrid grid = new WebGrid(source: Model, rowsPerPage: 5);
     }
@@ -25,9 +25,8 @@
                    grid.Column("ThoiGianDat", header: "Ngày đặt"),
                    grid.Column("TinhTrangGiaoHang", header: "Tình trạng giao hàng"),
                    grid.Column("DaThanhToan", "Đã thanh toán"),
-                   grid.Column("DinhViKhachHang", "Định vị khách hàng"),
-                   grid.Column(format: p => Html.ActionLink("Duyệt đơn hàng", "DuyetDonHang", new { id = p.MaDonDatHang
-        }, new { @target = "banml" }))
+                   grid.Column("DinhViKhachHang", "Định vị khách hàng")
+                  
                    ))
     <style>
         .divTable {

@@ -1,7 +1,7 @@
 ﻿@using DoAnChuyenNganh.Models;
 @model IEnumerable<DonDatHang>
 @{
-    ViewBag.Title = "DonHangChuaTinhThoiGian";
+    ViewBag.Title = "Đơn hàng chưa tính thời gian";
     Layout = "~/Views/Layout/HomeLayout.cshtml";
     WebGrid grid = new WebGrid(source: Model, rowsPerPage: 5);
 }

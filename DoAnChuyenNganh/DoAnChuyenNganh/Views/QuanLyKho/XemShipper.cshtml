@@ -2,7 +2,7 @@
 @model IEnumerable<Shipper>
 
 @{
-    ViewBag.Title = "XemShipper";
+    ViewBag.Title = "Xem Shipper";
     Layout = "~/Views/Layout/HomeLayout.cshtml";
 }
 
@@ -35,9 +35,8 @@
                         @Html.DisplayFor(modelItem => item.CaLam.CaLam1)
                     </td>
                     <td>
-                        @Html.ActionLink("Xem danh sách đơn hàng phân công", "XemDonHangChuaGiao", new { id = item.MaShipper }) |
-                        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                        @Html.ActionLink("Xem danh sách đơn hàng phân công", "XemDonHangChuaGiao", new { id = item.MaShipper }) 
+              
                     </td>
                 </tr>
             }

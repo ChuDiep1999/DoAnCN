@@ -144,7 +144,7 @@ namespace DoAnChuyenNganh.Controllers
                     Quyen = Quyen.Substring(0, Quyen.Length - 1);
                     PhanQuyen(tv.TenDangNhap.ToString(), Quyen);
                 }    
-                    Session["TaiKhoan"] = tv;
+                Session["TaiKhoan"] = tv;
                 Session["HoTen"] = data.FirstOrDefault().HoTen;
                 Session["Id"]= data.FirstOrDefault().MaThanhVien;
                 Session["LoaiThanhVien"] = data.FirstOrDefault().LoaiThanhVien;

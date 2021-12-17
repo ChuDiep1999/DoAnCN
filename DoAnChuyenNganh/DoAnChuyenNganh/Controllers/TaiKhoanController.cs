@@ -61,6 +61,7 @@ namespace DoAnChuyenNganh.Controllers
                 return RedirectToAction("DangNhap", "Home");
             }
         }
+        [ValidateInput(false)]
         [HttpPost]
         public ActionResult DoiMatKhau( ThanhVien tv)
         {

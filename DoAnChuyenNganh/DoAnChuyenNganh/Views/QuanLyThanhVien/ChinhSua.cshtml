@@ -35,7 +35,7 @@
         <div class="form-group">
             <label for="focusedinput" class="col-sm-2 control-label">Email</label>
             <div class="col-sm-8">
-                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nhập số điện thoại" } })
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nhập Email" } })
                 @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
             </div>
         </div>

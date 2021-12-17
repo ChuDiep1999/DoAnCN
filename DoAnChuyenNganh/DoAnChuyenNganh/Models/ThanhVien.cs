@@ -21,7 +21,7 @@ namespace DoAnChuyenNganh.Models
         [Required(ErrorMessage = "Tên đăng nhập không được để trống")]
         public string TenDangNhap { get; set; }
         [DisplayName("Mật Khẩu")]
-        [Required(ErrorMessage = "Mật khẩu không được để trống")]
+       
         public string MatKhau { get; set; }
         [Required(ErrorMessage = "Họ tên không được để trống")]
         [DisplayName("Họ Tên")]

@@ -60,42 +60,7 @@ namespace DoAnChuyenNganh.Controllers
                 return RedirectToAction("DangNhap", "Home");
             }
         }
-        public ActionResult ChonShipper(int? id)
-        {
-            if (Session["TaiKhoan"] != null)
-            {
-                if (id == null)
-                {
-                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-                }
-                DonDatHang model = db.DonDatHangs.SingleOrDefault(n => n.MaDonDatHang == id);
-                if (model == null)
-                {
-                    return HttpNotFound();
-                }
-                ViewBag.MaShipper = new SelectList(db.Shippers.OrderBy(n => n.MaShipper), "MaShipper", "MaShipper", model.MaShipper);
-                return View(model);
-            }
-            else
-            {
-                return RedirectToAction("DangNhap", "Home");
-            }
-        }
-        [ValidateInput(false)]
-        [HttpPost]
-        public ActionResult ChonShipper(DonDatHang ddh)
-        {
-            ViewBag.MaShipper = new SelectList(db.Shippers.OrderBy(n => n.MaShipper), "MaShipper", "MaShipper", ddh.MaShipper);
-            DonDatHang tvUpdate = db.DonDatHangs.Single(n => n.MaDonDatHang == ddh.MaDonDatHang);
-            tvUpdate.MaShipper = ddh.MaShipper;
-            db.SaveChanges();
-            return RedirectToAction("DonHangChuaCoShipper");
-        }
-        public ActionResult DanhSachShipperPartial()
-        {
-            var listShipper = db.Shippers.Where(n=>n.DangDiGiao==false);
-            return PartialView(listShipper);
-        }
+        
         [HttpGet]
         public ActionResult DuyetDonHang(int? id)
         {

@@ -24,10 +24,13 @@
                         <td>Tình trạng giao hàng: <b style="color: red;">@Model.TinhTrangGiaoHang</b></td>
                     </tr>
                 </table>
+                <br />
+                <input type="submit" class="btn btn-success" value="Lưu đơn hàng" />
             </td>
-        </tr>
+        </tr>   
         <tr>
             <td>Thời gian đặt: @Html.EditorFor(model => model.ThoiGianGiao, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nhập thời gian giao" } })</td>
+
         </tr>
         <tr>
             <td><b>Sản phẩm</b></td>
@@ -48,7 +51,7 @@
             <td align="right" colspan="4">Tổng số lượng: @Model.ChiTietDonDatHangs.Sum(n => n.SoLuong) sản phẩm</td>
         </tr>
         <tr>
-            <td align="right" colspan="4">Tổng tiền: @Model.ChiTietDonDatHangs.Sum(n => n.MatHang.DonGia).Value.ToString("#,##") đồng</td>
+            <td align="right" colspan="4">Tổng tiền: @Model.ChiTietDonDatHangs.Sum(n => n.MatHang.DonGia * n.SoLuong).Value.ToString("#,##") đồng</td>
         </tr>
     </table>
     <div class="row table">
@@ -60,7 +63,7 @@
                     Tới : <input class="form-control" id="travelto" type="text" name="name" value=@Model.DinhViKhachHang />
                     <br />
                     <input class="btn btn-success" type="button" value="Tính thời gian" onclick="GetRoute()" />
-                    <input type="submit" class="btn btn-success" value="Lưu đơn hàng" />
+                    @*<input type="submit" class="btn btn-success" value="Lưu đơn hàng" />*@
                 </div>
                 <br />
                 <div>
